@@ -1,11 +1,10 @@
 # Patitas
-### Plataforma de cuidado de Mascotas
-### c20-26-m-java-react
+### Plataforma de cuidado de Mascotas - c20-26-m-java-react
 
 [//]: # (# ![image]&#40;https://github.com/user-attachments/assets/026...;)
 
 
-### Descripcion 
+## Descripcion 
 El proyecto Patitas tiene como propósito mejorar ...
 
 ## Funciones principales
