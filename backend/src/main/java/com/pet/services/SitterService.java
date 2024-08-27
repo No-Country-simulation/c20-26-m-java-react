@@ -1,7 +1,7 @@
-package com.pet.service;
+package com.pet.services;
 
-import com.pet.model.Sitter;
-import com.pet.repository.ISitterRepository;
+import com.pet.models.Sitter;
+import com.pet.repositories.ISitterRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

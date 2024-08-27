@@ -1,6 +1,6 @@
-package com.pet.service;
+package com.pet.services;
 
-import com.pet.model.Sitter;
+import com.pet.models.Sitter;
 import java.util.List;
 
 public interface ISitterService {

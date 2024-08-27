@@ -1,6 +1,6 @@
-package com.pet.service;
+package com.pet.services;
 
-import com.pet.model.PetService;
+import com.pet.models.PetService;
 import java.util.List;
 
 public interface IPetServiceService {

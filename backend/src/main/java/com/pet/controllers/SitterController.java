@@ -1,7 +1,7 @@
-package com.pet.controller;
+package com.pet.controllers;
 
-import com.pet.model.Sitter;
-import com.pet.service.ISitterService;
+import com.pet.models.Sitter;
+import com.pet.services.ISitterService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
