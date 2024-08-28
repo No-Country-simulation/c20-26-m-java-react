@@ -15,9 +15,9 @@ import java.util.List;
 @Entity
 @Table(name = "pet_sitter")
 public class PetSitter extends User {
-    @OneToMany(mappedBy = "petSitter")
+    @OneToMany
     private List<PetService> servicesList;
 
-    @OneToMany(mappedBy = "petSitter")
+    @OneToMany
     private List<Qualification> qualificationList;
 }

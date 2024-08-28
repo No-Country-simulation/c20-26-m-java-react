@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @MappedSuperclass
-public class User extends Base{
+public abstract class User extends Base{
 
     @Column(name = "name", nullable = false)
     private String name;
