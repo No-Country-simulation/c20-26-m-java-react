@@ -21,7 +21,7 @@ public class Reservation extends Base {
     @Column(name = "day", nullable = false)
     private Day reservationDay;
     @Column(name = "hour", nullable = false)
-    private AvailableHours appointmentHour;
+    private AvailableHours reservationHour;
     //Qué iría en nombre? 
     @Column(name = "name", nullable = false)
     private String name;
