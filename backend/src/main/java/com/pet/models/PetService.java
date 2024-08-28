@@ -1,38 +1,31 @@
 package com.pet.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Getter@Setter
+import java.util.List;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
-public class PetService {
-    
-    @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE)
-    public long serviceCode;
-    public String name;
-    public String serviceDescription;
-    public String location;
-    public String specialConditions;
-    public double price;
-    @OneToOne
-    public Sitter aSitter;
+@Table(name = "service")
+public class PetService extends Base {
 
-    public PetService() {
-    }
+    @Enumerated(EnumType.STRING)
+    @Column(name = "name", nullable = false)
+    private ServiceName name;
+    private String serviceDescription;
+    private String location;
+    private String specialConditions;
+    @Column(name = "price", nullable = false)
+    private Double price;
+    @ManyToOne
+    @JoinColumn(name = "pet_sitter_id")
+    private PetSitter petSitter;
 
-    public PetService(long serviceCode, String name, String serviceDescription, String location, String specialConditions, double price, Sitter aSitter) {
-        this.serviceCode = serviceCode;
-        this.name = name;
-        this.serviceDescription = serviceDescription;
-        this.location = location;
-        this.specialConditions = specialConditions;
-        this.price = price;
-        this.aSitter = aSitter;
-    } 
+    @OneToMany(mappedBy = "petService")
+    private List<Qualification> qualifications;
 }
