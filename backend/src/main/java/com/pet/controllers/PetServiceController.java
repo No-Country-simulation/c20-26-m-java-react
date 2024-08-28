@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping(path = "api/services")
+@RequestMapping(path = "api/pet-services")
 public class PetServiceController extends BaseControllerImpl<PetService , PetServiceServiceImpl>{
 
 }

@@ -22,10 +22,4 @@ public class PetService extends Base {
     private String specialConditions;
     @Column(name = "price", nullable = false)
     private Double price;
-    @ManyToOne
-    @JoinColumn(name = "pet_sitter_id")
-    private PetSitter petSitter;
-
-    @OneToMany(mappedBy = "petService")
-    private List<Qualification> qualifications;
 }
