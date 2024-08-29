@@ -16,6 +16,7 @@ import com.pet.repositories.IPetSitterRepository;
 import com.pet.repositories.IReservationRepository;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -81,16 +82,16 @@ public class ReservationServiceImpl extends BaseServiceImpl<Reservation, Long> i
     public ReservationResponseDTO updateReservation(Long reservationId, ReservationRequestDTO request) {
         
         Reservation reservation = reservationRepository.findById(reservationId)
-                .orElseThrow(() -> new ResourceNotFoundException("No se econtró reserva"));
+                .orElseThrow(() -> new ResourceNotFoundException("No se econtró reservación."));
 
         PetSitter petSitter = petSitterRepository.findById(request.getPetSitterId())
-                .orElseThrow(() -> new ResourceNotFoundException("No se econtró cuidador"));
+                .orElseThrow(() -> new ResourceNotFoundException("No se econtró cuidador."));
 
         Pet pet = petRepository.findById(request.getPetId())
-                .orElseThrow(() -> new ResourceNotFoundException("No se encontró mascota"));
+                .orElseThrow(() -> new ResourceNotFoundException("No se encontró mascota."));
         
         PetOwner petOwner = petOwnerRepository.findById(request.getPetOwnerId())
-                .orElseThrow(() -> new ResourceNotFoundException("No se encontró dueño"));
+                .orElseThrow(() -> new ResourceNotFoundException("No se encontró dueño."));
 
         reservation.setPetSitter(petSitter);
         reservation.setPet(pet);
@@ -106,62 +107,37 @@ public class ReservationServiceImpl extends BaseServiceImpl<Reservation, Long> i
 
     @Override
     public ReservationResponseDTO getReservationById(Long reservationId) {
-
-
-
-
-
-
-
-
+        Reservation reservation = reservationRepository.findById(reservationId)
+                .orElseThrow(() -> new ResourceNotFoundException("No se encontró reservación."));
+        return new ReservationResponseDTO(reservation);
     }
 
     @Override
     public List<ReservationResponseDTO> getReservationsByPetSitterId(Long petSitterId) {
-
-
-
-
-
-
-
-
+        List<Reservation> reservations = reservationRepository.findByPetSitterId(petSitterId);
+        return reservations.stream().map(ReservationResponseDTO::new).collect(Collectors.toList());
     }
+
 
     @Override
     public List<ReservationResponseDTO> getReservationsByPetId(Long petId) {
-
-
-
-
-
-
-
-
+       List<Reservation> reservations = reservationRepository.findByPetId(petId);
+        return reservations.stream().map(ReservationResponseDTO::new).collect(Collectors.toList()); 
     }
+
 
     @Override
     public List<ReservationResponseDTO> getReservationsByPetOwnerId(Long petOwnerId) {
-
-
-
-
-
-
-
-
-
+        List<Reservation> reservations = reservationRepository.findByPetOwnerId(petOwnerId);
+        return reservations.stream().map(ReservationResponseDTO::new).collect(Collectors.toList());
     }
+
 
     @Override
     public List<ReservationResponseDTO> getAllReservations() {
-
-
-
-
-
-
-
-
+        List<Reservation> reservations = reservationRepository.findAll();
+        return reservations.stream()
+                .map(ReservationResponseDTO::new)
+                .collect(Collectors.toList());
     }
 }
