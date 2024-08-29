@@ -30,6 +30,9 @@ public class Reservation extends Base {
     @LastModifiedDate
     @Column(name = "updated_at")
     private LocalDate updatedAt;
+    @ManyToOne
+    @JoinColumn(name = "petowner_id", nullable = false)
+    private PetOwner petOwner;
     @ManyToMany
     @JoinColumn(name = "pet_id", nullable = false)
     private Pet pet;
