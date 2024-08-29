@@ -2,7 +2,7 @@ package com.pet.controllers;
 
 import com.pet.dtos.request.ReservationRequestDTO;
 import com.pet.dtos.responses.ReservationResponseDTO;
-import com.pet.exceptions.PetNotAvailableException;
+import com.pet.exceptions.PetOwnerNotAvailableException;
 import com.pet.exceptions.PetSitterNotAvailableException;
 import com.pet.exceptions.ResourceNotFoundException;
 import com.pet.models.Reservation;
@@ -45,7 +45,7 @@ public class ReservationController extends BaseControllerImpl<Reservation, Reser
         } catch (PetSitterNotAvailableException e) {
             response.put("message", e.getMessage());
             return ResponseEntity.status(HttpStatus.CONFLICT).body(response);
-        } catch (PetNotAvailableException e) {
+        } catch (PetOwnerNotAvailableException e) {
             response.put("message", e.getMessage());
             return ResponseEntity.status(HttpStatus.CONFLICT).body(response);
         } catch (Exception e) {

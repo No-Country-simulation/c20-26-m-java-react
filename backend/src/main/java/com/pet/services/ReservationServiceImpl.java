@@ -2,7 +2,7 @@ package com.pet.services;
 
 import com.pet.dtos.request.ReservationRequestDTO;
 import com.pet.dtos.responses.ReservationResponseDTO;
-import com.pet.exceptions.PetNotAvailableException;
+import com.pet.exceptions.PetOwnerNotAvailableException;
 import com.pet.exceptions.PetSitterNotAvailableException;
 import com.pet.exceptions.ResourceNotFoundException;
 import com.pet.models.Pet;
@@ -60,7 +60,7 @@ public class ReservationServiceImpl extends BaseServiceImpl<Reservation, Long> i
         //Deberia cambiar el dueño por la mascota, ver desp
         boolean petOwnerHasReservation = reservationRepository.existsByPetOwnerAndReservationDayAndReservationHour(petOwner, request.getReservationDay(), request.getReservationHour());
         if (petOwnerHasReservation) {
-            throw new PetNotAvailableException("El dueño ya tiene una cita en el plazo seleccionado.");
+            throw new PetOwnerNotAvailableException("El dueño ya tiene una cita en el plazo seleccionado.");
         }
 
         Reservation reservation = Reservation.builder()
