@@ -78,12 +78,30 @@ public class ReservationServiceImpl extends BaseServiceImpl<Reservation, Long> i
     }
 
     @Override
-    public ReservationResponseDTO updateReservation(Long reservationId, ReservationRequestDTO reservationRequestDTO) {
+    public ReservationResponseDTO updateReservation(Long reservationId, ReservationRequestDTO request) {
+        
+        Reservation reservation = reservationRepository.findById(reservationId)
+                .orElseThrow(() -> new ResourceNotFoundException("No se econtró reserva"));
 
+        PetSitter petSitter = petSitterRepository.findById(request.getPetSitterId())
+                .orElseThrow(() -> new ResourceNotFoundException("No se econtró cuidador"));
 
+        Pet pet = petRepository.findById(request.getPetId())
+                .orElseThrow(() -> new ResourceNotFoundException("No se encontró mascota"));
+        
+        PetOwner petOwner = petOwnerRepository.findById(request.getPetOwnerId())
+                .orElseThrow(() -> new ResourceNotFoundException("No se encontró dueño"));
 
+        reservation.setPetSitter(petSitter);
+        reservation.setPet(pet);
+        reservation.setPetOwner(petOwner);
+        reservation.setReservationDay(request.getReservationDay());
+        reservation.setReservationHour(request.getReservationHour());
+        reservation.setReservationDescription(request.getReservationDescription());
+        reservation.setUpdatedAt(LocalDate.now());
 
-
+        reservation = reservationRepository.save(reservation);
+        return new ReservationResponseDTO(reservation);
     }
 
     @Override
