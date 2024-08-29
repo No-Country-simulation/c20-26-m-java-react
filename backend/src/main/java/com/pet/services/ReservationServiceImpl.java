@@ -57,7 +57,6 @@ public class ReservationServiceImpl extends BaseServiceImpl<Reservation, Long> i
             throw new PetSitterNotAvailableException("El cuidador no está disponible en el horario seleccionado.");
         }
 
-        //Deberia cambiar el dueño por la mascota, ver desp
         boolean petOwnerHasReservation = reservationRepository.existsByPetOwnerAndReservationDayAndReservationHour(petOwner, request.getReservationDay(), request.getReservationHour());
         if (petOwnerHasReservation) {
             throw new PetOwnerNotAvailableException("El dueño ya tiene una cita en el plazo seleccionado.");

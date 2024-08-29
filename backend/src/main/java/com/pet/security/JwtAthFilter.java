@@ -30,7 +30,7 @@ public class JwtAthFilter extends OncePerRequestFilter {
         }
         jwtToken = authHeader.substring(7);
         userEmail = "implementar metodo que recupera el email del token";
-        if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+        /*if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userdetails = userDetaisService.loadUserByUsername(userEmail);
             final boolean isValid = "implementar metodo que valida el token";
             if (isValid) {
@@ -41,7 +41,7 @@ public class JwtAthFilter extends OncePerRequestFilter {
         }
 
     }
-        filterChain.doFilter(request, response);
+        filterChain.doFilter(request, response);*/
     }
 
 }

@@ -33,7 +33,7 @@ public class Reservation extends Base {
     @ManyToOne
     @JoinColumn(name = "petowner_id", nullable = false)
     private PetOwner petOwner;
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name = "pet_id", nullable = false)
     private Pet pet;
     @ManyToOne
