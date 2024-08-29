@@ -22,9 +22,6 @@ public class Reservation extends Base {
     private Day reservationDay;
     @Column(name = "hour", nullable = false)
     private AvailableHours reservationHour;
-    //Qué iría en nombre? 
-    @Column(name = "name", nullable = false)
-    private String name;
     @Column(name = "reservation_description", length = 120)
     private String reservationDescription;
     @CreatedDate
@@ -33,8 +30,7 @@ public class Reservation extends Base {
     @LastModifiedDate
     @Column(name = "updated_at")
     private LocalDate updatedAt;
-    //Por qué está ligado al dueño y a la mascota pero no al cuidador?
-    @ManyToOne//Puede ser Many to Many
+    @ManyToMany
     @JoinColumn(name = "pet_id", nullable = false)
     private Pet pet;
     @ManyToOne
@@ -43,6 +39,7 @@ public class Reservation extends Base {
     @ManyToOne
     @JoinColumn(name = "service_id", nullable = false)
     private PetService petService;
+    //revisar
     @ManyToOne
     @JoinColumn(name = "petsitter_id", nullable = false)
     private PetSitter petSitter;

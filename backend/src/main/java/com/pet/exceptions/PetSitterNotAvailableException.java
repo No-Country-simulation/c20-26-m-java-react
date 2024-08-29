@@ -1,5 +1,7 @@
 package com.pet.exceptions;
 
-public class PetSitterNotAvailableException {
-    
+public class PetSitterNotAvailableException extends ConflictException{
+    public PetSitterNotAvailableException(String message) {
+        super(message);
+    }
 }
