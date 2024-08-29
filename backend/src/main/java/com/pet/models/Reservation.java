@@ -39,7 +39,6 @@ public class Reservation extends Base {
     @ManyToOne
     @JoinColumn(name = "service_id", nullable = false)
     private PetService petService;
-    //revisar
     @ManyToOne
     @JoinColumn(name = "petsitter_id", nullable = false)
     private PetSitter petSitter;
