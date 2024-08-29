@@ -24,9 +24,9 @@ public class ReservationRequestDTO {
     @NotNull(message = "Se requiere el ID de la mascota.")
     private Long petId;
     @NotNull(message = "Se requiere la fecha de la reserva.")
-    private Day appointmentDay;
+    private Day reservationDay;
     @NotNull(message = "Se requiere la hora de la reserva.")
-    private AvailableHours appointmentHour;
+    private AvailableHours reservationHour;
     @Size(max = 120, message = "La descripción de la reserva no debe exceder los 120 caracteres.")
     private String reservationDescription;
 }
