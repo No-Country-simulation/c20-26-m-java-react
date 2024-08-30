@@ -21,8 +21,5 @@ public class Pet extends Base {
     private Integer age;
     private String behavior;
     private Boolean vaccinated;
-    @ManyToOne
-    @JoinColumn(name = "pet_owner_id", nullable = false)
-    private PetOwner petOwner;
 }
 
