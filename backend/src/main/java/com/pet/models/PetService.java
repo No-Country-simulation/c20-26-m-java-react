@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,4 +20,7 @@ public class PetService extends Base {
     private String specialConditions;
     @Column(name = "price", nullable = false)
     private Double price;
+    @ManyToOne
+    @JoinColumn(name = "petsitter_id", nullable = false)
+    private PetSitter petSitter;
 }
