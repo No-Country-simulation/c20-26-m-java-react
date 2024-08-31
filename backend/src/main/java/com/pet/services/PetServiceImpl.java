@@ -15,4 +15,9 @@ public class PetServiceImpl extends BaseServiceImpl<Pet, Long> implements PetSer
     public PetServiceImpl(BaseRepository<Pet, Long> baseRepository) {
         super(baseRepository);
     }
+
+    @Override
+    protected BaseRepository<Pet, Long> getRepository() {
+        return petRepository;
+    }
 }
