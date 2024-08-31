@@ -2,30 +2,18 @@ package com.pet.services;
 
 import com.pet.models.PetService;
 import com.pet.repositories.BaseRepository;
+
 import com.pet.repositories.IPetServiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class PetServiceServiceImpl extends BaseServiceImpl<PetService, Long> implements PetServiceService {
 
-    private final IPetServiceRepository petServiceRepository;
-
     @Autowired
-    public PetServiceServiceImpl(IPetServiceRepository petServiceRepository) {
-        super(petServiceRepository);
-        this.petServiceRepository = petServiceRepository;
-    }
+    private IPetServiceRepository petServiceRepository;
 
-    @Override
-    public List<PetService> searchServices(String name, String category) {
-        return petServiceRepository.findByNameContainingAndCategoryContaining(name, category);
-    }
-
-    @Override
-    protected BaseRepository<PetService, Long> getRepository() {
-        return petServiceRepository;
+    public PetServiceServiceImpl(BaseRepository<PetService, Long> baseRepository) {
+        super(baseRepository);
     }
 }

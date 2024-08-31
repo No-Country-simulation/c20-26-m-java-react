@@ -15,9 +15,4 @@ public class AdminServiceImpl extends BaseServiceImpl<Admin, Long> implements Ad
     public AdminServiceImpl(BaseRepository<Admin, Long> baseRepository) {
         super(baseRepository);
     }
-
-    @Override
-    protected BaseRepository<Admin, Long> getRepository() {
-        return adminRepository;
-    }
 }

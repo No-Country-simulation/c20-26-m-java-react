@@ -15,9 +15,4 @@ public class QualificationServiceImpl extends BaseServiceImpl<Qualification, Lon
     public QualificationServiceImpl(BaseRepository<Qualification, Long> baseRepository) {
         super(baseRepository);
     }
-
-    @Override
-    protected BaseRepository<Qualification, Long> getRepository() {
-        return qualificationRepository;
-    }
 }
