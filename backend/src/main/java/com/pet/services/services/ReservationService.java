@@ -1,11 +1,13 @@
-package com.pet.services;
+package com.pet.services.services;
 
 import com.pet.dtos.request.ReservationRequestDTO;
 import com.pet.dtos.responses.ReservationResponseDTO;
 import com.pet.models.Reservation;
+import com.pet.services.BaseService;
+
 import java.util.List;
 
-public interface ReservationService extends BaseService <Reservation, Long>{
+public interface ReservationService extends BaseService<Reservation, Long> {
 
     ReservationResponseDTO createReservation(ReservationRequestDTO reservationRequestDTO);
     ReservationResponseDTO updateReservation(Long reservationId, ReservationRequestDTO reservationRequestDTO);

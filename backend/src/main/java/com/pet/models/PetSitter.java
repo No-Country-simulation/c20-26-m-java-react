@@ -8,14 +8,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
 @Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "pet_sitter")
 public class PetSitter extends User {
-    @OneToMany
+    @OneToMany(mappedBy = "petSitter")
     private List<PetService> servicesList;
 
     @OneToMany

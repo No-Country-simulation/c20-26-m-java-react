@@ -1,4 +1,4 @@
-package com.pet.services;
+package com.pet.services.services;
 
 import com.pet.dtos.request.ReservationRequestDTO;
 import com.pet.dtos.responses.ReservationResponseDTO;
@@ -9,11 +9,9 @@ import com.pet.models.Pet;
 import com.pet.models.PetOwner;
 import com.pet.models.PetSitter;
 import com.pet.models.Reservation;
-import com.pet.repositories.BaseRepository;
-import com.pet.repositories.IPetOwnerRepository;
-import com.pet.repositories.IPetRepository;
-import com.pet.repositories.IPetSitterRepository;
-import com.pet.repositories.IReservationRepository;
+import com.pet.repositories.*;
+import com.pet.services.BaseServiceImpl;
+import com.pet.services.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

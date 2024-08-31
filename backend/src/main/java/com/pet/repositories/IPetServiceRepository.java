@@ -8,6 +8,6 @@ import java.util.List;
 @Repository
 public interface IPetServiceRepository extends BaseRepository<PetService, Long> {
 
-    // Metodo personalizado para buscar servicios de mascotas
+    // Método personalizado para buscar servicios de mascotas
     List<PetService> findByNameContainingAndCategoryContaining(String name, String category);
 }

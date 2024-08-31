@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @Repository
 public interface IPetSitterRepository extends BaseRepository<PetSitter, Long> {
 
-    // Metodo personalizado para buscar cuidadores de mascotas
+    // Método personalizado para buscar cuidadores de mascotas
     Page<PetSitter> findByServices_NameContainingAndAddressContainingAndAvailabilityBetween(
             String service,
             String location,
