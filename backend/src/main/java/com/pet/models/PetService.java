@@ -1,6 +1,7 @@
 package com.pet.models;
 
 import jakarta.persistence.*;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,18 +10,23 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "service")
+@Table(name = "pet_service")
 public class PetService extends Base {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "name", nullable = false)
     private ServiceName name;
+    
     private String serviceDescription;
     private String location;
     private String specialConditions;
+    
     @Column(name = "price", nullable = false)
     private Double price;
-    @ManyToOne
-    @JoinColumn(name = "petsitter_id", nullable = false)
-    private PetSitter petSitter;
+    
+    @ManyToMany(mappedBy = "petServices")
+    private List<PetSitter> petSitters;
+    
+    @OneToMany(mappedBy = "petService")
+    private List<Reservation> reservations;
 }

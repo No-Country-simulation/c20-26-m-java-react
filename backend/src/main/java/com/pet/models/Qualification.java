@@ -14,7 +14,12 @@ public class Qualification extends Base {
     @Column(name = "value", nullable = false)
     private Integer value;
     private String description;
+    
     @OneToOne
-    @JoinColumn(name = "service_id", nullable = false)
+    @JoinColumn(name = "pet_service_id", nullable = false)
     private PetService petService;
+    
+    @ManyToOne()
+    @JoinColumn(name = "pet_sitter_id", nullable = false)
+    private PetSitter petSitter;
 }

@@ -1,4 +1,4 @@
-package com.pet.dtos.requests;
+package com.pet.dtos.request;
 
 import com.pet.enumerations.AvailableHours;
 import com.pet.enumerations.Day;
