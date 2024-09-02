@@ -24,23 +24,29 @@ public class Reservation extends Base {
     private AvailableHours reservationHour;
     @Column(name = "reservation_description", length = 120)
     private String reservationDescription;
+    
     @CreatedDate
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDate createdAt;
+    
     @LastModifiedDate
     @Column(name = "updated_at")
     private LocalDate updatedAt;
+    
     @ManyToOne
-    @JoinColumn(name = "petowner_id", nullable = false)
+    @JoinColumn(name = "pet_owner_id", nullable = false)
     private PetOwner petOwner;
+    
     @ManyToOne
     @JoinColumn(name = "pet_id", nullable = false)
     private Pet pet;
+    
     @ManyToOne
-    @JoinColumn(name = "service_id", nullable = false)
+    @JoinColumn(name = "pet_service_id", nullable = false)
     private PetService petService;
+    
     @ManyToOne
-    @JoinColumn(name = "petsitter_id", nullable = false)
+    @JoinColumn(name = "pet_sitter_id", nullable = false)
     private PetSitter petSitter;
 }
 

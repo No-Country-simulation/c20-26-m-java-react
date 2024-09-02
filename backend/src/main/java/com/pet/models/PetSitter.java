@@ -1,6 +1,10 @@
 package com.pet.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -19,9 +23,14 @@ import lombok.Setter;
 @Entity
 @Table(name = "pet_sitter")
 public class PetSitter extends User {
-    @OneToMany(mappedBy = "petSitter")
-    private List<PetService> servicesList;
+    @ManyToMany
+    @JoinTable(
+        name = "pet_sitter_service",
+        joinColumns = @JoinColumn(name = "pet_sitter_id"),
+        inverseJoinColumns = @JoinColumn(name = "pet_service_id")
+    )
+    private List<PetService> petServices;
 
-    @OneToMany
+    @OneToMany(mappedBy = "petSitter")
     private List<Qualification> qualificationList;
 }
