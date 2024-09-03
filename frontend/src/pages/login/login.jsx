@@ -1,8 +1,11 @@
+import { Button } from 'bootstrap'
 import React from 'react'
 
 const Login = () => {
   return (
-    <div>Login</div>
+    <div>
+      <Button>Login</Button>
+    </div>
   )
 }
 
