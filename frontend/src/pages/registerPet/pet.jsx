@@ -1,4 +1,4 @@
-import { Formik, Field, ErrorMessage, useField } from "formik";
+import { Formik, Field, useField } from "formik";
 import * as Yup from "yup";
 import PropTypes from 'prop-types';
 
@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 const Pet = () => {
 
   const validationSchema = Yup.object().shape({
-    name: Yup.string().required("Campo obligatorio"),
+    name: Yup.string().required(),
     species: Yup.string().required("Campo obligatorio"),
     race: Yup.string().required("Campo obligatorio"),
     gender: Yup.string().required("Campo obligatorio"),
@@ -31,12 +31,7 @@ const Pet = () => {
                 }}
                 placeholder={label}
                 className={props.className}
-            />
-            <ErrorMessage
-                name={props.name}
-                component="p"
-                className="error-message"
-            />
+            />  
         </div>
     );
   };

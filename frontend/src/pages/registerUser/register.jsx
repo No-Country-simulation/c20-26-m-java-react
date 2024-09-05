@@ -1,4 +1,4 @@
-import { Formik, Field, ErrorMessage, useField } from "formik";
+import { Formik, Field, useField } from "formik";
 import * as Yup from "yup";
 import PropTypes from 'prop-types';
 
@@ -7,16 +7,16 @@ import PropTypes from 'prop-types';
 const Register = () => {
 
   const validationSchema = Yup.object().shape({
-    name: Yup.string().required("Campo obligatorio"),
-    dni: Yup.string().required("Campo obligatorio"),
-    classUser: Yup.string().required("Campo obligatorio"),
-    phone: Yup.string().required("Campo obligatorio"),
+    name: Yup.string().required(),
+    dni: Yup.string().required(),
+    classUser: Yup.string().required(),
+    phone: Yup.string().required(),
     email: Yup.string()
         .email("Correo inválido")
-        .required("Campo obligatorio"),
-    city: Yup.string().required("Campo obligatorio"),
-    userName: Yup.string().required("Campo obligatorio"),
-    password: Yup.string().required("Campo obligatorio"),
+        .required(),
+    city: Yup.string().required(),
+    userName: Yup.string().required(),
+    password: Yup.string().required(),
   });
 
   const CustomInput = ({ label, ...props }) => {
@@ -34,11 +34,6 @@ const Register = () => {
                 }}
                 placeholder={label}
                 className={props.className}
-            />
-            <ErrorMessage
-                name={props.name}
-                component="p"
-                className="error-message"
             />
         </div>
     );
