@@ -23,3 +23,11 @@ a{
 button{
     cursor: pointer;
 }
+.btn-warning {
+    background-color: #E3E458 !important;
+    
+}
+.btn {
+    border: 1px solid black !important;
+}
+
