@@ -5,5 +5,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IPetOwnerRepository extends BaseRepository<PetOwner, Long>{
+    PetOwner findByUsername(String username);
 
 }

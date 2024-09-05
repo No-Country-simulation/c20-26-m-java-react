@@ -5,5 +5,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IAdminRepository extends BaseRepository<Admin, Long>{
+    Admin findByUsername(String username);
 
 }
