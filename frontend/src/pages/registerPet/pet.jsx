@@ -92,19 +92,11 @@ const Pet = () => {
                             <CustomInput  label="Genero" name="gender" className="form-control rounded-pill" placeholder="Celular" />
                           </div>
                           <div className="col-md-6">
-<<<<<<< HEAD
                             <CustomInput label="Edad" name="age" className="form-control rounded-pill" placeholder="E-mail" />
                           </div>
                           <div className="col-md-6">
                             <CustomInput
                               label="Se encuentra vacunado?"
-=======
-                            <CustomInput  label="Edad" name="age" className="form-control rounded-pill" placeholder="E-mail" />
-                          </div>
-                          <div className="col-md-6">
-                            <CustomInput
-                              label="vaccinated"
->>>>>>> bd1766c69bac9f66e94a0da93216216ed7ef0ba6
                               name="classUser"
                               as="select"
                               className="form-control rounded-pill "
@@ -118,17 +110,10 @@ const Pet = () => {
                           </div>
                           
                           <div className="col-md-6">
-<<<<<<< HEAD
                             <CustomInput label="Description" name="description" className="form-control rounded-pill" placeholder="Nombre de usuario" />
                           </div>
                           <div className="col-md-6">
                             <CustomInput label="Comportamiento" name="behavior" className="form-control rounded-pill" placeholder="Contraseña" />
-=======
-                            <CustomInput name="description" label="Descipcion" className="form-control rounded-pill" placeholder="Nombre de usuario" />
-                          </div>
-                          <div className="col-md-6">
-                            <CustomInput  label="Comportamiento" name="behavior" className="form-control rounded-pill" placeholder="Contraseña" />
->>>>>>> bd1766c69bac9f66e94a0da93216216ed7ef0ba6
                           </div>
                         </div>
                         <button type="submit" className="btn btn-warning w-100 rounded-pill mt-4">Enviar</button>
