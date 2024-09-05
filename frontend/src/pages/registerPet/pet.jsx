@@ -3,7 +3,6 @@ import * as Yup from "yup";
 import PropTypes from 'prop-types';
 
 
-
 const Pet = () => {
 
   const validationSchema = Yup.object().shape({
@@ -11,9 +10,7 @@ const Pet = () => {
     species: Yup.string().required("Campo obligatorio"),
     race: Yup.string().required("Campo obligatorio"),
     gender: Yup.string().required("Campo obligatorio"),
-    age: Yup.string()
-        .email("Correo inválido")
-        .required("Campo obligatorio"),
+    age: Yup.string().required("Campo obligatorio"),
     vaccinated: Yup.string().required("Campo obligatorio"),
     description: Yup.string(),
     behavior: Yup.string().required("Campo obligatorio"),
@@ -92,31 +89,31 @@ const Pet = () => {
                             <CustomInput label="Raza" name="race" className="form-control rounded-pill" />
                           </div>
                           <div className="col-md-6">
-                            <CustomInput name="gender" label="Genero" className="form-control rounded-pill" placeholder="Celular" />
+                            <CustomInput  label="Genero" name="gender" className="form-control rounded-pill" placeholder="Celular" />
                           </div>
                           <div className="col-md-6">
-                            <CustomInput name="age" label="Edad" className="form-control rounded-pill" placeholder="E-mail" />
+                            <CustomInput label="Edad" name="age" className="form-control rounded-pill" placeholder="E-mail" />
                           </div>
                           <div className="col-md-6">
                             <CustomInput
-                              label="vaccinated"
-                              name="vaccinated"
+                              label="Se encuentra vacunado?"
+                              name="classUser"
                               as="select"
                               className="form-control rounded-pill "
                             >
                               <option value="" disabled>
-                                Tipo de usuario
+                                Se encuentra vacunado?
                               </option>
-                              <option value="vaccinated">Dueño de Mascota</option>
-                              <option value="prestadorServicio">Prestador de servicios</option>
+                              <option className="" value="si">Si</option>
+                              <option value="no">No</option>
                             </CustomInput>
                           </div>
                           
                           <div className="col-md-6">
-                            <CustomInput name="userName" label="description" className="form-control rounded-pill" placeholder="Nombre de usuario" />
+                            <CustomInput label="Description" name="description" className="form-control rounded-pill" placeholder="Nombre de usuario" />
                           </div>
                           <div className="col-md-6">
-                            <CustomInput name="password" label="behavior" className="form-control rounded-pill" placeholder="Contraseña" />
+                            <CustomInput label="Comportamiento" name="behavior" className="form-control rounded-pill" placeholder="Contraseña" />
                           </div>
                         </div>
                         <button type="submit" className="btn btn-warning w-100 rounded-pill mt-4">Enviar</button>
