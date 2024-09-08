@@ -27,7 +27,7 @@ public class ReservationController {
 
     @PostMapping("/createReservation")
     public ResponseEntity<Map<String, String>> createReservation(@Valid @RequestBody ReservationRequestDTO reservationRequestDTO) {
-        Map<String, String> response = new HashMap<>();
+        Map<String, String> response = new HashMap<String, String>();
         try {
             ReservationResponseDTO createdReservation = reservationService.createReservation(reservationRequestDTO);
             return ResponseEntity.status(HttpStatus.CREATED).body(Collections.singletonMap("message", "Reservación creada correctamente"));

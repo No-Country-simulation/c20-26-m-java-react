@@ -36,13 +36,13 @@ public class JwtAthFilter extends OncePerRequestFilter {
 
         jwtToken = authHeader.substring(7);
 
-        // Implementa el método para recuperar el email del token
+        // Implementa el metodo para recuperar el email del token
         userEmail = getEmailFromToken(jwtToken);
 
         if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = userDetailsService.loadUserByUsername(userEmail);
 
-            // Implementa el método para validar el token
+            // Implementa el metodo para validar el token
             final boolean isValid = validateToken(jwtToken, userDetails);
 
             if (isValid) {
