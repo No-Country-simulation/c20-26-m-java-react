@@ -1,8 +1,10 @@
-package com.pet.services;
+package com.pet.services.services;
 
 import com.pet.models.Admin;
 import com.pet.repositories.BaseRepository;
 import com.pet.repositories.IAdminRepository;
+import com.pet.services.AdminService;
+import com.pet.services.BaseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

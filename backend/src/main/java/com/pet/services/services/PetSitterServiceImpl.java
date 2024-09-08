@@ -1,8 +1,10 @@
-package com.pet.services;
+package com.pet.services.services;
 
 import com.pet.models.PetSitter;
-import com.pet.repositories.IPetSitterRepository;
 import com.pet.repositories.BaseRepository;
+import com.pet.repositories.IPetSitterRepository;
+import com.pet.services.BaseServiceImpl;
+import com.pet.services.PetSitterService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;

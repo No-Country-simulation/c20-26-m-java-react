@@ -1,6 +1,7 @@
-package com.pet.services;
+package com.pet.services.services;
 
 import com.pet.models.PetService;
+import com.pet.services.BaseService;
 
 import java.util.List;
 

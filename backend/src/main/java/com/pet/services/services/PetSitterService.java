@@ -1,6 +1,7 @@
-package com.pet.services;
+package com.pet.services.services;
 
 import com.pet.models.PetSitter;
+import com.pet.services.BaseService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
