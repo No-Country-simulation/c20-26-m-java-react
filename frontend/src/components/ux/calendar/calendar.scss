@@ -1,0 +1,59 @@
+.calendar-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Espacio entre los iconos y el mes */
+    width: 100%;
+  }
+  
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+  }
+  
+  .calendar-day {
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 14px;
+    color: #444;
+  }
+  
+  .current-day {
+    background-color: #444;
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  .add-event-btn {
+    margin-top: 20px;
+    background-color: #f3d1e1;
+    border: none;
+    padding: 10px 121px;
+    color: #444;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .calendar-month {
+    margin: 0 10px; /* Espacio alrededor del mes */
+    text-align: center;
+    flex-grow: 1; /* Esto asegura que el título del mes ocupe el espacio restante entre los iconos */
+  }
+  
+  .bi {
+    cursor: pointer;
+    font-size: 24px; /* Aumenta el tamaño del icono si es necesario */
+  }
+  
