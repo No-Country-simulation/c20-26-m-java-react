@@ -1,11 +1,16 @@
 import React from 'react'
+import './layout.scss'
+import Footer from '../footer/footer'
+import Header from '../header/header'
 
 const Layout = ({children}) => {
   return (
-    <div style={{maxWidth:"1200px", margin:"auto", padding:"0 10px"}}>
-        {/* <p>Im a header</p> */}
-        {children}
-        {/* <p>Im a footer</p> */}
+    <div className='layoutWrapper'>
+        <Header />
+        <div className='contentWrapper'>
+          {children}
+        </div>
+        <Footer />
     </div>
   )
 }
