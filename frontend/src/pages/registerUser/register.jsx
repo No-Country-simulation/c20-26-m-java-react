@@ -76,7 +76,7 @@ const Register = () => {
                       <h4 className="col ms-3">Registro de Usuario</h4>
                     </div>
                       <div className="mb-4">
-                        <img src="../public/perfil.jpg" alt="Usuario" className="rounded-circle" style={{ width: '100px', height: '100px' }} />
+                        <img src="../assets/pet.jpg" alt="Usuario" className="rounded-circle" style={{ width: '100px', height: '100px' }} />
                       </div>
                       <form>
                         <div className="row g-3">

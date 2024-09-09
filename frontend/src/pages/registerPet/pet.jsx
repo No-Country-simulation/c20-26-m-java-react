@@ -3,7 +3,6 @@ import * as Yup from "yup";
 import PropTypes from 'prop-types';
 
 
-
 const Pet = () => {
 
   const validationSchema = Yup.object().shape({
@@ -74,7 +73,7 @@ const Pet = () => {
                       <h4 className="col ms-3">Registro de Mascota</h4>
                     </div>
                       <div className="mb-4">
-                        <img src="../public/pet.jpg" alt="Usuario" className="rounded-circle" style={{ width: '100px', height: '100px' }} />
+                        <img src="../assets/pet.jpg" alt="Usuario" className="rounded-circle" style={{ width: '100px', height: '100px' }} />
                       </div>
                       <form>
                         <div className="row g-3">
