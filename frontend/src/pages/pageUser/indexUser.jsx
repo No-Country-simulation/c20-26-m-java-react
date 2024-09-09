@@ -7,6 +7,7 @@ export default function User() {
         <div>
             <CardProfile/>
             <Card/>
+            
         </div>
             
     )
