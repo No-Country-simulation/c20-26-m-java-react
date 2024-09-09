@@ -71,7 +71,10 @@ const Register = () => {
                 <div className="col-lg-8">
                   <div className="card rounded-4 shadow-lg p-5">
                     <div className="card-body text-center">
-                      <h4 className="mb-4">Registro de Usuario</h4>
+                    <div className="d-flex justify-content-start align-items-center mb-4">
+                      <i className="bi bi-caret-left-fill" style={{ fontSize: '24px', cursor: 'pointer' }}></i>
+                      <h4 className="col ms-3">Registro de Usuario</h4>
+                    </div>
                       <div className="mb-4">
                         <img src="../public/perfil.jpg" alt="Usuario" className="rounded-circle" style={{ width: '100px', height: '100px' }} />
                       </div>
