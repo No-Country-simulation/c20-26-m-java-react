@@ -31,3 +31,6 @@ button{
     border: 1px solid black !important;
 }
 
+.border-radius {
+    border-radius: 15px !important;
+}
