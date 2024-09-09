@@ -1,17 +1,20 @@
 package com.pet.services;
 
-import com.pet.dtos.request.ReservationRequestDTO;
+import com.pet.dtos.requests.ReservationCreateDTO;
+import com.pet.dtos.requests.ReservationUpdateDTO;
 import com.pet.dtos.responses.ReservationResponseDTO;
 import com.pet.exceptions.PetOwnerNotAvailableException;
 import com.pet.exceptions.PetSitterNotAvailableException;
 import com.pet.exceptions.ResourceNotFoundException;
 import com.pet.models.Pet;
 import com.pet.models.PetOwner;
+import com.pet.models.PetService;
 import com.pet.models.PetSitter;
 import com.pet.models.Reservation;
 import com.pet.repositories.BaseRepository;
 import com.pet.repositories.IPetOwnerRepository;
 import com.pet.repositories.IPetRepository;
+import com.pet.repositories.IPetServiceRepository;
 import com.pet.repositories.IPetSitterRepository;
 import com.pet.repositories.IReservationRepository;
 import java.time.LocalDate;
@@ -35,13 +38,16 @@ public class ReservationServiceImpl extends BaseServiceImpl<Reservation, Long> i
     @Autowired
     private IPetOwnerRepository petOwnerRepository;
     
+    @Autowired
+    private IPetServiceRepository petServiceRepository;
+
     
     public ReservationServiceImpl(BaseRepository<Reservation, Long> baseRepository) {
         super(baseRepository);
     }
 
     @Override
-    public ReservationResponseDTO createReservation(ReservationRequestDTO request) {
+    public ReservationResponseDTO createReservation(ReservationCreateDTO request) {
         
         PetSitter petSitter = petSitterRepository.findById(request.getPetSitterId())
                 .orElseThrow(() -> new ResourceNotFoundException("No se encontró cuidador con el ID especificado."));
@@ -52,33 +58,36 @@ public class ReservationServiceImpl extends BaseServiceImpl<Reservation, Long> i
         PetOwner petOwner = petOwnerRepository.findById(request.getPetOwnerId())
                 .orElseThrow(() -> new ResourceNotFoundException("No se encontró dueño con el ID especificado."));
 
+        PetService petService = petServiceRepository.findById(request.getPetServiceId())
+                .orElseThrow(() -> new ResourceNotFoundException("No se encontró servicio con el ID especificado."));
+
         boolean petSitterAvailable = !reservationRepository.existsByPetSitterAndReservationDayAndReservationHour(petSitter, request.getReservationDay(), request.getReservationHour());
         if (!petSitterAvailable) {
             throw new PetSitterNotAvailableException("El cuidador no está disponible en el horario seleccionado.");
         }
 
-        boolean petOwnerHasReservation = reservationRepository.existsByPetOwnerAndReservationDayAndReservationHour(petOwner, request.getReservationDay(), request.getReservationHour());
-        if (petOwnerHasReservation) {
-            throw new PetOwnerNotAvailableException("El dueño ya tiene una cita en el plazo seleccionado.");
+        boolean petHasReservation = reservationRepository.existsByPetAndReservationDayAndReservationHour(pet, request.getReservationDay(), request.getReservationHour());
+        if (petHasReservation) {
+            throw new PetOwnerNotAvailableException("La mascota ya tiene una cita en el plazo seleccionado.");
         }
 
         Reservation reservation = Reservation.builder()
                 .petSitter(petSitter)
                 .pet(pet)
                 .petOwner(petOwner)
+                .petService(petService)
                 .reservationDay(request.getReservationDay())
                 .reservationHour(request.getReservationHour())
                 .reservationDescription(request.getReservationDescription())
                 .createdAt(LocalDate.now())
-                .updatedAt(LocalDate.now())
                 .build();
 
-        reservation = reservationRepository.save(reservation);
-        return new ReservationResponseDTO(reservation);
+        Reservation response = reservationRepository.save(reservation);
+        return new ReservationResponseDTO(response);
     }
 
     @Override
-    public ReservationResponseDTO updateReservation(Long reservationId, ReservationRequestDTO request) {
+    public ReservationResponseDTO updateReservation(Long reservationId,ReservationUpdateDTO request) {
         
         Reservation reservation = reservationRepository.findById(reservationId)
                 .orElseThrow(() -> new ResourceNotFoundException("No se econtró reservación."));
@@ -92,8 +101,12 @@ public class ReservationServiceImpl extends BaseServiceImpl<Reservation, Long> i
         PetOwner petOwner = petOwnerRepository.findById(request.getPetOwnerId())
                 .orElseThrow(() -> new ResourceNotFoundException("No se encontró dueño."));
 
+        PetService petService = petServiceRepository.findById(request.getPetServiceId())
+                .orElseThrow(() -> new ResourceNotFoundException("No se encontró servicio con el ID especificado."));
+
         reservation.setPetSitter(petSitter);
         reservation.setPet(pet);
+        reservation.setPetService(petService);
         reservation.setPetOwner(petOwner);
         reservation.setReservationDay(request.getReservationDay());
         reservation.setReservationHour(request.getReservationHour());
