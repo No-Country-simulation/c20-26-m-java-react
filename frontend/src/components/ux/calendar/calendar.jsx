@@ -54,8 +54,7 @@ export default function Calendar() {
           </div>
         ))}
       </div>
-
-      <button className="add-event-btn">Add Event</button>
+      <button className="add-event-btn">Agregar evento</button>
     </div>
   );
 }

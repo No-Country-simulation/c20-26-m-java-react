@@ -1,24 +1,12 @@
 *{
-    margin: 0 ;
-    padding: 0 ;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
-    font-size: 12px;
-
-    @media screen and (min-width: 768px) {
-        font-size: 14px;
-    }
-
-    @media screen and (min-width: 1024px) {
-        font-size: 16px;
-    } 
-
 }
-
 h1, h2, h3, h4, h5, h6, p{
-    margin: 0 ;
-    padding: 0 ;
+    margin: 0;
+    padding: 0;
 }
-
 form{
     margin: 0;
     padding: 0;
@@ -35,7 +23,6 @@ a{
 button{
     cursor: pointer;
 }
-
 .p6 {
     font-size: 12px;
 }
@@ -49,11 +36,11 @@ button{
     color: black !important;
 }
 .btn-warning {
-    background-color: #E3E458 ;
+    background-color: #E3E458 !important;
     
 }
 .btn {
-    border: 1px solid black ;
+    border: 1px solid black !important;
 }
 
 .border-radius {
