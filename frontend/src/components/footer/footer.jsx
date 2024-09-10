@@ -1,4 +1,3 @@
-import React from 'react'
 import './footer.scss'
 import FOOTERIMG from "../../assets/images/Footer/footer.png"
 import { IconContext } from "react-icons";

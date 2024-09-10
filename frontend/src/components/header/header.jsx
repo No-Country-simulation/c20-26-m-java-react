@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import './header.scss'
 import HEADERLOGO from "../../assets/images/Logo.png"
 import { useNavigate } from 'react-router-dom'
