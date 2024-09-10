@@ -31,6 +31,11 @@ button{
     background-color: #E3E458 !important;
     color: white !important;
 }
+
+.bg-c2 {
+    background-color: #e1ebf3 !important;
+    color: black !important;
+}
 .btn-warning {
     background-color: #E3E458 !important;
     
