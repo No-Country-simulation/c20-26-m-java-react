@@ -2,10 +2,9 @@
 
 export default function CardEvent() {
     return(
-        
         <div className="container">
-            <div className="card mb-3 bg-c2 border-radius" style={{ maxWidth: "18rem" }}>
-                <div className="card-header text-center">Eventos</div>
+            <div className="card bg-c2 border-radius mb-3" style={{ maxWidth: "18rem" }}>
+                <div className="card-header text-center">Eventos pendientes</div>
                 <div className="card-body">
                     {/* Primera tarjeta */}
                     <div className="card mb-3 border-radius">
@@ -49,6 +48,5 @@ export default function CardEvent() {
                 </div>
             </div>
         </div>
-
     )
 }
