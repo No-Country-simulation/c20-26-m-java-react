@@ -10,6 +10,7 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -22,6 +23,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity
 public class SecurityConfig {
 
     @Bean
@@ -30,13 +32,7 @@ public class SecurityConfig {
             .csrf(customizer -> customizer.disable())    
             .httpBasic(Customizer.withDefaults())
             .sessionManagement(session -> 
-                        session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                        .authorizeHttpRequests(request -> {
-                    //request.anyRequest().authenticated())
-                    request.requestMatchers(HttpMethod.GET, "/api/pet-services").permitAll();
-                    request.requestMatchers(HttpMethod.GET, "/api/reservations/getAll").hasAuthority("READ");
-                    request.anyRequest().denyAll();
-                        })
+                    session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .build();
     }
     
