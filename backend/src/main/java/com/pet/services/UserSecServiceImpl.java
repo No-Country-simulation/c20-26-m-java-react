@@ -38,9 +38,10 @@ public class UserSecServiceImpl implements UserSecService{
         return save(userSec);
     }
 
+    //Implementar a futuro
     @Override
     public String encriptPassword(String password) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet.");
     }
     
 }

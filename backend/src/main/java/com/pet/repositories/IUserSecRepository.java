@@ -9,6 +9,4 @@ import org.springframework.stereotype.Repository;
 public interface IUserSecRepository extends JpaRepository<UserSec, Long> {
     
     Optional<UserSec> findUserSecEntityByUsername(String username);
-    //Luisina:     Optional<UserSec> findUserEntityByUsername(String username);
-
 }

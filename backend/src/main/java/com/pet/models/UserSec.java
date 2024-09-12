@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserSec {
+public class UserSec  {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long id;
