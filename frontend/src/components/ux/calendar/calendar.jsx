@@ -2,6 +2,7 @@ import './calendar.scss';
 import { useState, useEffect } from 'react';
 import moment from 'moment';
 import 'moment/locale/es'; 
+import { NavLink } from 'react-router-dom';
 
 export default function Calendar() {
   const [dates, setDates] = useState([]);
@@ -62,7 +63,9 @@ export default function Calendar() {
           </div>
           ))}
       </div>
-      <button className="add-event-btn">Agregar evento</button>
+      <button  className="add-event-btn">
+        <NavLink className='text-black' style={{textDecoration: 'none'}} to={'/search'}>Agregar evento</NavLink>
+        </button>
     </div>
   </div>
 

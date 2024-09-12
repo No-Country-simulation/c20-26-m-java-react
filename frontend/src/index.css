@@ -44,6 +44,10 @@ button{
     background-color: #E8C0E3 !important;
     color: black;
 }
+.bg-c4 {
+    background-color: #1F1D20 !important;
+    color: #e1ebf3 !important;
+}
 .btn-warning {
     background-color: #E3E458 !important;
     
@@ -54,7 +58,6 @@ button{
 
 .border-radius {
     border-radius: 15px !important;
-    border: 0.5px solid;
 }
 
 .target {
@@ -90,7 +93,7 @@ button{
 }
 
 .card-body {
-    padding-top: 30px; 
+    padding-top: 60px !important; 
 }
 .card-event-container {
     margin: 0 auto;
@@ -101,4 +104,10 @@ button{
     height: 50px; 
 }
 
+.add {
+    background: padding-box;
+}
+.scroll {
+    overflow-x: scroll !important;
+}
   
