@@ -2,11 +2,11 @@
 
 export default function CardEvent() {
     return(
-        <div className="container">
+        <div className="card-event-container mt-3">
             <div className="card bg-c2 border-radius mb-3" style={{ maxWidth: "18rem" }}>
                 <div className="card-header text-center">Eventos pendientes</div>
                 <div className="card-body">
-                    {/* Primera tarjeta */}
+
                     <div className="card mb-3 border-radius">
                         <div className="container d-flex flex-row align-items-center">
                             <div className="me-3">

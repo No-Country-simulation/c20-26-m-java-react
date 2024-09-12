@@ -27,8 +27,7 @@ const Header = () => {
         </div>
         {
             isLogin && (
-                <div className='loginContainer' onClick={handleClickUser}>
-                    <img src='https://via.placeholder.com/150' alt='userPhoto' />
+                <div className='' onClick={handleClickUser}>
                     {
                         menuUser && (
                             <div className='menuUser'>
