@@ -1,6 +1,7 @@
 package com.pet.controllers;
 
-import com.pet.dtos.request.ReservationRequestDTO;
+import com.pet.dtos.requests.ReservationCreateDTO;
+import com.pet.dtos.requests.ReservationUpdateDTO;
 import com.pet.dtos.responses.ReservationResponseDTO;
 import com.pet.exceptions.PetOwnerNotAvailableException;
 import com.pet.exceptions.PetSitterNotAvailableException;
@@ -36,8 +37,7 @@ public class ReservationController extends BaseControllerImpl<Reservation, Reser
     private ReservationService reservationService;
 
     @PostMapping("/createReservation")
-    @PreAuthorize("hasAuthority('CREATE')")
-    public ResponseEntity<Map<String, String>> createReservation(@Valid @RequestBody ReservationRequestDTO reservationRequestDTO) {
+    public ResponseEntity<Map<String, String>> createReservation(@Valid @RequestBody ReservationCreateDTO reservationRequestDTO) {
         Map<String, String> response = new HashMap<>();
         try {
             ReservationResponseDTO createdReservation = reservationService.createReservation(reservationRequestDTO);
@@ -58,10 +58,9 @@ public class ReservationController extends BaseControllerImpl<Reservation, Reser
     }
 
     @PutMapping("/updateReservation/{reservationId}")
-    @PreAuthorize("hasAuthority('UPDATE')")
-    public ResponseEntity<ReservationResponseDTO> updateReservation(@PathVariable Long reservationId, @Valid @RequestBody ReservationRequestDTO reservationRequestDTO) {
+    public ResponseEntity<ReservationResponseDTO> updateReservation(@PathVariable Long reservationId, @Valid @RequestBody ReservationUpdateDTO reservationUpdateDTO) {
         try {
-            ReservationResponseDTO updatedReservation = reservationService.updateReservation(reservationId, reservationRequestDTO);
+            ReservationResponseDTO updatedReservation = reservationService.updateReservation(reservationId, reservationUpdateDTO);
             return ResponseEntity.ok(updatedReservation);
         } catch (ResourceNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
