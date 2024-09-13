@@ -64,7 +64,7 @@ export default function Calendar() {
           ))}
       </div>
       <button  className="add-event-btn">
-        <NavLink className='text-black' style={{textDecoration: 'none'}} to={'/search'}>Agregar evento</NavLink>
+        <NavLink className='text-black textDecoration' to={'/search'}>Agregar evento</NavLink>
         </button>
     </div>
   </div>

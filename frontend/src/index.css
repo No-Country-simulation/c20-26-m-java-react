@@ -23,6 +23,9 @@ a{
 button{
     cursor: pointer;
 }
+.textDecoration {
+    text-decoration: none;
+}
 .bi-person-circle {
     height: 10px;
 }
@@ -110,4 +113,63 @@ button{
 .scroll {
     overflow-x: scroll !important;
 }
+.card-pet-container {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .custom-card {
+    width: 800px; 
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-image {
+    width: 70%;
+    height: 190px;
+    object-fit: cover;
+  }
+  
+  .card-content {
+    padding: 10px;
+  }
+  
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .pet-name {
+    font-size: 23px; /* Tamaño de fuente más grande */
+    font-weight: bold;
+  }
+  
+  .pet-age {
+    font-size: 16px;
+    color: gray;
+  }
+  
+  .pet-details {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    background-color: #E8C0E3;
+    border-radius: 10px;
+  }
+  
+  .card-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+  
+  .card-icon i {
+    font-size: 22px; /* Tamaño del ícono ajustado */
+  }
+  
   

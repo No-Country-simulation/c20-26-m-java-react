@@ -9,27 +9,29 @@ export default function CardProfile() {
         { name: 'Morfi', owner: 'Laura Rodriguez', imageSrc: '../src/assets/images/pet5.jpg' }
     ]);
 
+    /*
     const [newProfile, setNewProfile] = useState({
         name: '',
         owner: '',
         imageSrc: ''
-    });
+    });*/
 
-    const [showForm, setShowForm] = useState(false); 
+    //const [showForm, setShowForm] = useState(false); 
 
+    /*
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setNewProfile(prevProfile => ({
             ...prevProfile,
             [name]: value
         }));
-    };
-
+    };*/
+    /*
     const handleAddProfile = () => {
         setCardProfiles([...cardProfiles, newProfile]);
         setNewProfile({ name: '', owner: '', imageSrc: '' }); 
         setShowForm(false); 
-    };
+    };*/
 
     return (
         <div>
@@ -50,6 +52,7 @@ export default function CardProfile() {
                             </div>
                         </div>
                     ))}
+                    {/*
                     <div className="mx-1 px-1 mb-2 custom-margin row mt-2">
                         <div className="text-center">
                             <div className="card-body bg-c4 border-radius d-flex justify-content-center align-items-center" style={{ width: '90px', height: '140px' }} onClick={() => setShowForm(true)}>
@@ -60,9 +63,10 @@ export default function CardProfile() {
                             </div>
                         </div>
                     </div>
+                    */}
                 </div>
             </div>
-
+            {/*
             {showForm && (
                 <div className="modal-overlay">
                     <div className="modal-content">
@@ -86,6 +90,7 @@ export default function CardProfile() {
                     </div>
                 </div>
             )}
+            */}
         </div>
     );
 }
