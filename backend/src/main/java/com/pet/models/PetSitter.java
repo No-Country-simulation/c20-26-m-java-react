@@ -21,8 +21,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "pet_sitter")
-public class PetSitter extends User {
+//@Table(name = "pet_sitter")
+public class PetSitter extends UserSec {
     @ManyToMany
     @JoinTable(
         name = "pet_sitter_service",
@@ -30,6 +30,7 @@ public class PetSitter extends User {
         inverseJoinColumns = @JoinColumn(name = "pet_service_id")
     )
     private List<PetService> petServices;
+    private boolean approved = false; // approved by admin to be presented on site.
 
     @OneToMany(mappedBy = "petSitter")
     private List<Qualification> qualificationList;

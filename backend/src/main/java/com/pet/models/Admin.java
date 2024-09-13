@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 @Entity
-@Table(name = "admin")
-public class Admin extends User {
+//@Table(name = "admin")
+public class Admin extends UserSec {
 
 }

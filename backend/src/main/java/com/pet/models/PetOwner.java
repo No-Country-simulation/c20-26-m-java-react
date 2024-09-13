@@ -15,8 +15,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "pet_owner")
-public class PetOwner extends User {
+//@Table(name = "pet_owner")
+public class PetOwner extends UserSec {
     
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "petOwner")
     private List<Pet> pets;
