@@ -3,9 +3,9 @@ import Calendar from "../../components/ux/calendar/calendar"
 import PropTypes from 'prop-types';
 import CardPet from "../../components/ux/card/cardPet";
 
-export default function User({ filter, handleFilter }) {
+export default function Service({ filter, handleFilter }) {
 
-    User.propTypes = {
+    Service.propTypes = {
         filter: PropTypes.string,
         handleFilter: PropTypes.func 
     };
@@ -18,7 +18,7 @@ export default function User({ filter, handleFilter }) {
                         <input 
                             className="form-control me-2 border-radius custom-input" 
                             type="search" 
-                            value={filter} // Cambiado de checked a value
+                            value={filter} 
                             onChange={handleFilter} 
                             placeholder="Busca tu servicio favorito" 
                             aria-label="Search"

@@ -1,36 +1,21 @@
-import Card from "../../components/ux/card/card"
-import CardProfile from "../../components/ux/cardProfile/cardProfile"
-import Calendar from "../../components/ux/calendar/calendar"
+import Card from "../../components/ux/card/card";
+import CardProfile from "../../components/ux/cardProfile/cardProfile";
+import Calendar from "../../components/ux/calendar/calendar";
 import PropTypes from 'prop-types';
-import { useState } from 'react'
-import './header.scss'
-import { useNavigate } from 'react-router-dom'
+import './header.scss';
+import {  NavLink} from 'react-router-dom';
 
 export default function User({ filter, handleFilter }) {
 
-    const [isLogin, setIsLogin] = useState(true)
-    const [menuUser, setMenuUser] = useState(false)
-    const navigate = useNavigate()
-
-    const handleClickUser = () => {
-        setMenuUser(!menuUser)
-    }
-
-    const closeSession = () => {
-        setIsLogin(false)
-        navigate('/')
-    }
-    
-    User.propTypes = {
-        filter: PropTypes.string,
-        handleFilter: PropTypes.func 
+    const handleSubmit = (event) => {
+        event.preventDefault();
     };
 
     return (
         <div>
             <nav>
                 <div>
-                    <form className="d-flex" role="search">
+                    <form className="d-flex" role="search" onSubmit={handleSubmit}>
                         <input 
                             className="form-control me-2 border-radius custom-input" 
                             type="search" 
@@ -40,28 +25,18 @@ export default function User({ filter, handleFilter }) {
                             aria-label="Search"
                         />
                         <div className="d-flex" style={{ alignItems: 'center' }}>
-                            <button className="btn border-radius bi bi-search-heart" style={{ fontSize: '1rem' }} type="submit"></button>
+                            <button 
+                                className="btn border-radius bi bi-search-heart" 
+                                style={{ fontSize: '1rem' }} 
+                                type="submit">
+                            </button>
                         </div>
-                        {
-                            isLogin && (
-                                <>
-                                    {/* Ícono de perfil con onClick */}
-                                    <i 
-                                        className="bi bi-person-circle m-2 headerWrapper" 
-                                        style={{ fontSize: '2rem', cursor: 'pointer' }}
-                                        onClick={handleClickUser}
-                                    ></i>
-                                    {
-                                        menuUser && (
-                                            <div className="menuUser">
-                                                <p onClick={() => navigate('/user')}>Perfil</p>
-                                                <p onClick={closeSession}>Cerrar Sesión</p>
-                                            </div>
-                                        )
-                                    }
-                                </>
-                            )
-                        }
+                        <span className="navbar-text order-lg-2 order-0">
+                            <NavLink to={'/search'}>
+                                <i className="bi bi-person"></i>
+                            </NavLink>
+                        </span>
+
                     </form>
                 </div>
                 <nav className="navbar">
@@ -87,3 +62,9 @@ export default function User({ filter, handleFilter }) {
         </div>
     );
 }
+
+// Definición de PropTypes fuera del componente
+User.propTypes = {
+    filter: PropTypes.string,
+    handleFilter: PropTypes.func 
+};
