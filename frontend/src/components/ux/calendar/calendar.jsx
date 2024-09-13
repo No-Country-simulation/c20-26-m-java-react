@@ -1,63 +1,72 @@
 import './calendar.scss';
 import { useState, useEffect } from 'react';
 import moment from 'moment';
-import 'moment/locale/es'; // Importa el locale en español
+import 'moment/locale/es'; 
+import { NavLink } from 'react-router-dom';
 
-export default function Calendario() {
-  const [fechas, setFechas] = useState([]); // Lista de fechas
-  const [mesActual, setMesActual] = useState(moment()); // Estado para controlar el mes actual
+export default function Calendar() {
+  const [dates, setDates] = useState([]);
+  const [currentMonth, setCurrentMonth] = useState(moment()); 
+
+  const weekDays = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom']; // Días de la semana
 
   useEffect(() => {
-    moment.locale('es'); // Configura moment para usar español
+    moment.locale('es'); 
 
-    const fechaInicio = mesActual.clone().startOf('month'); // Primer día del mes actual
-    const fechaFin = mesActual.clone().endOf('month'); // Último día del mes actual
-    const dias = [];
+    const startDate = currentMonth.clone().startOf('month'); 
+    const endDate = currentMonth.clone().endOf('month'); 
+    const days = [];
 
-    let dia = fechaInicio.clone();
+    let day = startDate.clone();
 
-    while (dia.isBefore(fechaFin) || dia.isSame(fechaFin)) {
-      dias.push({
-        dia: dia.date(),
-        diaSemana: dia.format('ddd').replace('.', ''), 
-        esDiaActual: dia.isSame(moment(), 'day'),
+    while (day.isBefore(endDate) || day.isSame(endDate)) {
+      days.push({
+        day: day.date(),
+        weekDay: day.format('ddd').replace('.', ''), 
+        isCurrentDay: day.isSame(moment(), 'day'),
       });
-      dia.add(1, 'days');
-    }
+      day.add(1, 'days');
+    };
 
-    setFechas(dias); 
-  }, [mesActual]);
+    setDates(days); 
+  }, [currentMonth]);
 
-  // ir al mes anterior
-  const irAlMesAnterior = () => {
-    setMesActual(mesAnterior => mesAnterior.clone().subtract(1, 'months'));
+  const goToPreviousMonth = () => {
+    setCurrentMonth(prevMonth => prevMonth.clone().subtract(1, 'months'));
   };
 
-  // ir al siguiente mes
-  const irAlMesSiguiente = () => {
-    setMesActual(mesSiguiente => mesSiguiente.clone().add(1, 'months'));
+  const goToNextMonth = () => {
+    setCurrentMonth(nextMonth => nextMonth.clone().add(1, 'months'));
   };
 
   return (
-    <div className="calendar-container">
+    <div>
+      <div className="calendar-container">
         <div className="calendar-header">
-            <i className="bi bi-caret-left-fill" onClick={irAlMesAnterior}></i>
-            <h4 className="calendar-month">{mesActual.format('MMMM YYYY')}</h4> {/* El mes en español */}
-            <i className="bi bi-caret-right-fill" onClick={irAlMesSiguiente}></i>
+          <i className="bi bi-chevron-left" onClick={goToPreviousMonth}></i>
+          <h4 className="calendar-month">{currentMonth.format('MMMM YYYY')}</h4>
+          <i className="bi bi-chevron-right" onClick={goToNextMonth}></i>
         </div>
 
-      <div className="calendar-grid">
-        {fechas.map((fecha, index) => (
-          <div
-            key={index}
-            className={`calendar-day ${fecha.esDiaActual ? 'current-day' : ''}`}
-          >
-            <span>{fecha.dia}</span>
+        <div className="calendar-grid">
+          {weekDays.map((weekDay, index) => (
+            <div key={index} className="calendar-week-day">
+              <span>{weekDay}</span>
+            </div>
+          ))}
+          {dates.map((date, index) => (
+            <div
+              key={index}
+              className={`calendar-day ${date.isCurrentDay ? 'current-day' : ''}`}
+            >
+              <span>{date.day}</span>
           </div>
-        ))}
+          ))}
       </div>
-
-      <button className="add-event-btn">Agregar Evento</button>
+      <button  className="add-event-btn">
+        <NavLink className='text-black textDecoration' to={'/search'}>Agregar evento</NavLink>
+        </button>
     </div>
-  );
-}
+  </div>
+
+)}

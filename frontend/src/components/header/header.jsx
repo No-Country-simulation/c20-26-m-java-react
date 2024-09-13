@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import './header.scss'
 import HEADERLOGO from "../../assets/images/Logo.png"
 import { useNavigate } from 'react-router-dom'
@@ -27,8 +27,7 @@ const Header = () => {
         </div>
         {
             isLogin && (
-                <div className='loginContainer' onClick={handleClickUser}>
-                    <img src='https://via.placeholder.com/150' alt='userPhoto' />
+                <div className='' onClick={handleClickUser}>
                     {
                         menuUser && (
                             <div className='menuUser'>

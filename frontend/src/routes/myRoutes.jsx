@@ -10,6 +10,7 @@ const MyRoutes = () => {
     const Register = lazy(() => import("../pages/registerUser/register"))
     const Pet = lazy(() => import("../pages/registerPet/pet"))
     const User = lazy(() => import("../pages/pageUser/indexUser"))
+    const Service = lazy(() => import("../pages/pageServices/indexService"))
     const SearchService = lazy(() => import("../pages/searchService/searchService"))
 
     return (
@@ -24,6 +25,7 @@ const MyRoutes = () => {
                         <Route path="/register" element={<Register/>}/>
                         <Route path="/pet" element={<Pet/>}/>
                         <Route path="/user" element={<User/>}/>
+                        <Route path="/service" element={<Service/>}/>
                         <Route path="/search" element={<SearchService/>}/>
 
                     </Routes>
