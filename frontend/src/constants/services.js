@@ -4,6 +4,9 @@ export const DATASERVICES = [
     {
         photo: "https://via.placeholder.com/150",
         name: "Rosario Fernandez",
+        mail: "rosarioFernandez@homail.com",
+        dni: "12345678",
+        phone: "1122334455",
         typeService: "Paseador",
         price: Math.floor(Math.random() * 9000) + 1000,
         city: "Buenos Aires",
@@ -13,6 +16,9 @@ export const DATASERVICES = [
     {
         photo: "https://via.placeholder.com/150",
         name: "Juan Perez",
+        mail: "juanPerez@hotmail.com",
+        dni: "87654321",
+        phone: "1122334455",
         typeService: "Guarderia",
         price: Math.floor(Math.random() * 9000) + 1000,
         city: "Cordoba",
@@ -22,6 +28,9 @@ export const DATASERVICES = [
     {
         photo: "https://via.placeholder.com/150",
         name: "Maria Rodriguez",
+        mail: "mariaRodriguez@hotmail.com",
+        dni: "12345678",
+        phone: "1122334455",
         typeService: "Paseador",
         price: Math.floor(Math.random() * 9000) + 1000,
         city: "Mar del Plata",
@@ -31,6 +40,9 @@ export const DATASERVICES = [
     {
         photo: "https://via.placeholder.com/150",
         name: "Jose Lopez",
+        mail: "joseLopez@hotmail.com",
+        dni: "12345678",
+        phone: "1122334455",
         typeService: "Guarderia",
         price: Math.floor(Math.random() * 9000) + 1000,
         city: "Rosario",
