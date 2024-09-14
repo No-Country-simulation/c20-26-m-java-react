@@ -6,18 +6,18 @@ import ProfileData from "../../components/profileData/profileData";
 import ProfileLine from "../../components/ux/profileLine/profileLine";
 import ProfileImg from "../../components/ux/profileImg/profileImg";
 const Profile = () => {
-    const userProfile = USER[0];
-    /* const userProfile = DATASERVICES[0] */
+    /* const userProfile = USER[0]; */
+    const userProfile = DATASERVICES[4]
     return (
         <div className="profileWrapper">
             <ProfileData>
                 <ProfileImg imgProfile={userProfile.photo} titleProfile={'Informacion Personal'} />
                 <ProfileLine txt1="Nombre" txt2={userProfile.name} />
                 <ProfileLine txt1="DNI" txt2={userProfile.dni} />
-                {userProfile.typeService != "Usuario" ? (
+                {userProfile.typeService[0].type !== "Usuario" ? (
                     <ProfileLine
-                        txt1="Tipo de Usuario"
-                        txt2={userProfile.typeService}
+                        txt1="Servicios"
+                        txt2={userProfile.typeService.map((type) => type.type).join(", ")}
                     />
                 ) : (
                     ""

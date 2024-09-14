@@ -3,7 +3,11 @@ export const USER = [
         photo: "https://via.placeholder.com/150",
         name: "Maria Rodriguez",
         mail: "mariaRodriguez@homail.com",
-        typeService: "Usuario",
+        typeService:[
+            {
+                type: "Usuario",
+            }
+        ],
         dni: "12345678",
         phone: "1122334455",
         city: "Buenos Aires",
