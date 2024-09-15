@@ -1,10 +1,9 @@
 import { Button } from 'bootstrap'
-import React from 'react'
 
 const Login = () => {
   return (
     <div>
-      <Button>Login</Button>
+      <h1>Hola desde perfil</h1>
     </div>
   )
 }

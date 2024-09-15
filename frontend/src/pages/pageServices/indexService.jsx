@@ -1,7 +1,8 @@
 import Card from "../../components/ux/card/card"
 import Calendar from "../../components/ux/calendar/calendar"
 import PropTypes from 'prop-types';
-import CardPet from "../../components/ux/card/cardPet";
+import CardProfileService from "../../components/ux/profileServ/profileService";
+import { NavLink } from "react-router-dom";
 
 export default function Service({ filter, handleFilter }) {
 
@@ -24,9 +25,17 @@ export default function Service({ filter, handleFilter }) {
                             aria-label="Search"
                         />
                         <div className="d-flex" style={{ alignItems: 'center' }}>
-                            <button className="btn border-radius bi bi-search-heart" style={{ fontSize: '1rem' }} type="submit"></button>
+                            <button 
+                                className="btn border-radius bi bi-search-heart mt-1 mb-4" 
+                                style={{ fontSize: '1rem' }} 
+                                type="submit">
+                            </button>
                         </div>
-                        <i className="bi bi-person-circle m-2" style={{ fontSize: '2rem' }}></i>
+                        <span className="navbar-text order-lg-2 order-0">
+                            <NavLink to={'/login'}>
+                                <i className="bi bi-person" style={{fontSize: '30px'}}></i>
+                            </NavLink>
+                        </span>
                     </form>
                 </div>
                 <nav className="navbar">
@@ -38,7 +47,7 @@ export default function Service({ filter, handleFilter }) {
                     <h4 className="">Tus clientes</h4>
                     <div className="col-8">
                         <div>
-                            <CardPet/>
+                        <CardProfileService />
                             <Card />
                         </div>
                     </div>
