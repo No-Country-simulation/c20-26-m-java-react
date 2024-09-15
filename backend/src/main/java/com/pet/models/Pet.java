@@ -25,11 +25,11 @@ public class Pet extends Base {
     private String behavior;
     private Boolean vaccinated;
     
-    @ManyToOne()
-    @JoinColumn(name = "pet_owner_id", nullable = false)
-    private PetOwner petOwner;
-    
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "pet")
-    private List<Reservation> reservations;
+//    @ManyToOne()
+//    @JoinColumn(name = "pet_owner_id", nullable = false)
+//    private PetOwner petOwner;
+//
+//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "pet")
+//    private List<Reservation> reservations;
 }
 

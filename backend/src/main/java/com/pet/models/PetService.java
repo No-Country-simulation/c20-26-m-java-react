@@ -24,9 +24,9 @@ public class PetService extends Base {
     @Column(name = "price", nullable = false)
     private Double price;
     
-    @ManyToMany(mappedBy = "petServices")
-    private List<PetSitter> petSitters;
+//    @ManyToMany(mappedBy = "petServices")
+//    private List<PetSitter> petSitters;
     
-    @OneToMany(mappedBy = "petService")
-    private List<Reservation> reservations;
+//    @OneToMany(mappedBy = "petService")
+//    private List<Reservation> reservations;
 }

@@ -45,8 +45,8 @@ public class Reservation extends Base {
     @JoinColumn(name = "pet_service_id", nullable = false)
     private PetService petService;
     
-    @ManyToOne
-    @JoinColumn(name = "pet_sitter_id", nullable = false)
-    private PetSitter petSitter;
+        @ManyToOne
+        @JoinColumn(name = "pet_sitter_id", nullable = false)
+        private PetSitter petSitter;
 }
 

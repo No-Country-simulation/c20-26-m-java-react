@@ -18,9 +18,9 @@ import java.util.List;
 //@Table(name = "pet_owner")
 public class PetOwner extends UserSec {
     
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "petOwner")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Pet> pets;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "petOwner")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Reservation> reservations;
 }
