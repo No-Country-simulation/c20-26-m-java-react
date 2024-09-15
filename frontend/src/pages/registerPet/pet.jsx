@@ -12,7 +12,7 @@ const Pet = () => {
     gender: Yup.string().required("Campo obligatorio"),
     age: Yup.string().required("Campo obligatorio"),
     vaccinated: Yup.string().required("Campo obligatorio"),
-    description: Yup.string(),
+    detalle: Yup.string(),
     behavior: Yup.string().required("Campo obligatorio"),
   });
 
@@ -68,9 +68,12 @@ const Pet = () => {
                 <div className="col-lg-8">
                   <div className="card rounded-4 shadow-lg p-5">
                     <div className="card-body text-center">
-                      <h4 className="mb-4">Registro de Usuario</h4>
+                    <div className="d-flex justify-content-start align-items-center mb-4">
+                      <i className="bi bi-caret-left-fill" style={{ fontSize: '24px', cursor: 'pointer' }}></i>
+                      <h4 className="col ms-3">Registro de Mascota</h4>
+                    </div>
                       <div className="mb-4">
-                        <img src="../public/pet.jpg" alt="Usuario" className="rounded-circle" style={{ width: '100px', height: '100px' }} />
+                        <img src="../assets/pet.jpg" alt="Usuario" className="rounded-circle" style={{ width: '100px', height: '100px' }} />
                       </div>
                       <form>
                         <div className="row g-3">
@@ -84,7 +87,18 @@ const Pet = () => {
                             <CustomInput label="Raza" name="race" className="form-control rounded-pill" />
                           </div>
                           <div className="col-md-6">
-                            <CustomInput  label="Genero" name="gender" className="form-control rounded-pill" placeholder="Celular" />
+                            <CustomInput
+                              label="gender"
+                              name="classUser"
+                              as="select"
+                              className="form-control rounded-pill "
+                            >
+                              <option value="" disabled>
+                                Genero
+                              </option>
+                              <option value="femenino">Femenino/a</option>
+                              <option value="masculino">Masculinno/a</option>
+                            </CustomInput>
                           </div>
                           <div className="col-md-6">
                             <CustomInput label="Edad" name="age" className="form-control rounded-pill" placeholder="E-mail" />
@@ -103,12 +117,23 @@ const Pet = () => {
                               <option value="no">No</option>
                             </CustomInput>
                           </div>
-                          
                           <div className="col-md-6">
-                            <CustomInput label="Description" name="description" className="form-control rounded-pill" placeholder="Nombre de usuario" />
+                            <CustomInput label="Detalle" name="detalle" className="form-control rounded-pill" placeholder="Nombre de usuario" />
                           </div>
                           <div className="col-md-6">
-                            <CustomInput label="Comportamiento" name="behavior" className="form-control rounded-pill" placeholder="Contraseña" />
+                            <CustomInput
+                              label="Comportamiento"
+                              name="classUser"
+                              as="select"
+                              className="form-control rounded-pill "
+                            >
+                              <option value="" disabled>
+                                Comportamiento
+                              </option>
+                              <option value="si">Bueno</option>
+                              <option value="no">Regular</option>
+                              <option value="no">Malo</option>
+                            </CustomInput>
                           </div>
                         </div>
                         <button type="submit" className="btn btn-warning w-100 rounded-pill mt-4">Enviar</button>

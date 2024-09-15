@@ -1,15 +1,8 @@
-import React from "react";
+import PropTypes from "prop-types";
 import "./cardSearch.scss";
 import FormButton from "../formButton/formButton";
-const CardSearch = ({
-    photo,
-    name,
-    typeService,
-    price,
-    city,
-    textInfo,
-    tags,
-}) => {
+
+const CardSearch = ({ photo, name, typeService, price, city, textInfo, tags }) => {
     return (
         <div className="cardSearchWrapper">
             <div className="searchPersonalInfo">
@@ -40,6 +33,17 @@ const CardSearch = ({
             </div>
         </div>
     );
+};
+
+// PropTypes validation
+CardSearch.propTypes = {
+    photo: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    typeService: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    city: PropTypes.string.isRequired,
+    textInfo: PropTypes.string.isRequired,
+    tags: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default CardSearch;

@@ -1,24 +1,12 @@
 *{
-    margin: 0 ;
-    padding: 0 ;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
-    font-size: 12px;
-
-    @media screen and (min-width: 768px) {
-        font-size: 14px;
-    }
-
-    @media screen and (min-width: 1024px) {
-        font-size: 16px;
-    } 
-
 }
-
 h1, h2, h3, h4, h5, h6, p{
-    margin: 0 ;
-    padding: 0 ;
+    margin: 0;
+    padding: 0;
 }
-
 form{
     margin: 0;
     padding: 0;
@@ -35,11 +23,153 @@ a{
 button{
     cursor: pointer;
 }
+.textDecoration {
+    text-decoration: none;
+}
+.bi-person-circle {
+    height: 10px;
+}
+.bi::before {
+    vertical-align: 0 !important;
+}
+.p6 {
+    font-size: 13px;
+}
+.bg-c1 {
+    background-color: #E3E458 !important;
+    color: black !important;
+}
+.bg-c2 {
+    background-color: #e1ebf3 !important;
+    color: black !important;
+}
+.bg-c3 {
+    background-color: #E8C0E3 !important;
+    color: black;
+}
+.bg-c4 {
+    background-color: #1F1D20 !important;
+    color: #e1ebf3 !important;
+}
 .btn-warning {
-    background-color: #E3E458 ;
+    background-color: #E3E458 !important;
     
 }
 .btn {
-    border: 1px solid black ;
+    border: 1px solid black !important;
 }
 
+.border-radius {
+    border-radius: 15px !important;
+}
+
+.target {
+    background: #E3E458 !important;
+    border: 1px solid #E3E458 !important; 
+    width: 16rem !important;
+}
+.target-dark {
+    background: #1F1D20 !important;
+    border: 1px solid #1F1D20 !important; 
+    width: 16rem !important;
+}
+
+.circle-image {
+    width: 70px; 
+    height: 70px;
+    margin: 0 auto; 
+    overflow: hidden;
+    border-radius: 50%;
+    margin-top: -50px;  
+}
+
+.circle-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;  
+}
+
+.custom-margin {
+    margin-right: 5px;  
+    margin-left: 5px;  
+    margin-bottom: 10px; 
+}
+
+.card-body {
+    padding-top: 60px !important; 
+}
+.card-event-container {
+    margin: 0 auto;
+    margin-left: 65px;
+    padding: 0;
+}
+.custom-input {
+    height: 50px; 
+}
+
+.add {
+    background: padding-box;
+}
+.scroll {
+    overflow-x: scroll !important;
+}
+.card-pet-container {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .custom-card {
+    width: 800px; 
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-image {
+    width: 70%;
+    height: 190px;
+    object-fit: cover;
+  }
+  
+  .card-content {
+    padding: 10px;
+  }
+  
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .pet-name {
+    font-size: 23px; /* Tamaño de fuente más grande */
+    font-weight: bold;
+  }
+  
+  .pet-age {
+    font-size: 16px;
+    color: gray;
+  }
+  
+  .pet-details {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    background-color: #E8C0E3;
+    border-radius: 10px;
+  }
+  
+  .card-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+  
+  .card-icon i {
+    font-size: 22px; /* Tamaño del ícono ajustado */
+  }
+  
+  

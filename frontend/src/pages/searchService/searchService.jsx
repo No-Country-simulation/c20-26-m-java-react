@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./searchService.scss";
 import CardSearch from "../../components/ux/cardSearch/cardSearch";
 import { DATASERVICES } from "../../constants/services";
 import FormButton from "../../components/ux/formButton/formButton";
 const SearchService = () => {
+
     const dataServices = DATASERVICES;
     const [filter, setFilter] = useState("All");
     const [filterCity, setFilterCity] = useState("All");

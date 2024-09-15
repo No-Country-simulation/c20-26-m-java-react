@@ -1,21 +1,20 @@
-import Card from "../../components/ux/card/card";
-import CardProfile from "../../components/ux/cardProfile/cardProfile";
-import Calendar from "../../components/ux/calendar/calendar";
+import Card from "../../components/ux/card/card"
+import Calendar from "../../components/ux/calendar/calendar"
 import PropTypes from 'prop-types';
-import './header.scss';
-import {  NavLink} from 'react-router-dom';
+import CardPet from "../../components/ux/card/cardPet";
 
-export default function User({ filter, handleFilter }) {
+export default function Service({ filter, handleFilter }) {
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    Service.propTypes = {
+        filter: PropTypes.string,
+        handleFilter: PropTypes.func 
     };
 
     return (
         <div>
             <nav>
                 <div>
-                    <form className="d-flex" role="search" onSubmit={handleSubmit}>
+                    <form className="d-flex" role="search">
                         <input 
                             className="form-control me-2 border-radius custom-input" 
                             type="search" 
@@ -25,18 +24,9 @@ export default function User({ filter, handleFilter }) {
                             aria-label="Search"
                         />
                         <div className="d-flex" style={{ alignItems: 'center' }}>
-                            <button 
-                                className="btn border-radius bi bi-search-heart" 
-                                style={{ fontSize: '1rem' }} 
-                                type="submit">
-                            </button>
+                            <button className="btn border-radius bi bi-search-heart" style={{ fontSize: '1rem' }} type="submit"></button>
                         </div>
-                        <span className="navbar-text order-lg-2 order-0">
-                            <NavLink to={'/search'}>
-                                <i className="bi bi-person"></i>
-                            </NavLink>
-                        </span>
-
+                        <i className="bi bi-person-circle m-2" style={{ fontSize: '2rem' }}></i>
                     </form>
                 </div>
                 <nav className="navbar">
@@ -48,7 +38,7 @@ export default function User({ filter, handleFilter }) {
                     <h4 className="">Tus clientes</h4>
                     <div className="col-8">
                         <div>
-                            <CardProfile />
+                            <CardPet/>
                             <Card />
                         </div>
                     </div>
@@ -62,9 +52,3 @@ export default function User({ filter, handleFilter }) {
         </div>
     );
 }
-
-// Definición de PropTypes fuera del componente
-User.propTypes = {
-    filter: PropTypes.string,
-    handleFilter: PropTypes.func 
-};
