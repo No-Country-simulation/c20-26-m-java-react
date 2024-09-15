@@ -17,6 +17,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@PreAuthorize("denyAll()")
 @CrossOrigin(origins = "*")
 @RequestMapping(path = "api/reservations")
 public class ReservationController extends BaseControllerImpl<Reservation, ReservationServiceImpl>{
@@ -69,6 +71,7 @@ public class ReservationController extends BaseControllerImpl<Reservation, Reser
 
     
     @GetMapping("/getReservationById/{reservationId}")
+    @PreAuthorize("hasAuthority('READ')")
     public ResponseEntity<ReservationResponseDTO> getReservationById(@PathVariable Long reservationId) {
         try {
             ReservationResponseDTO reservation = reservationService.getReservationById(reservationId);
@@ -81,6 +84,7 @@ public class ReservationController extends BaseControllerImpl<Reservation, Reser
     }
 
     @GetMapping("/getByPetSitterId/{petSitterId}")
+    @PreAuthorize("hasAuthority('READ')")
     public ResponseEntity<List<ReservationResponseDTO>> getReservationsByPetSitterId(@PathVariable Long petSitterId) {
         try {
             List<ReservationResponseDTO> reservations = reservationService.getReservationsByPetSitterId(petSitterId);
@@ -91,6 +95,7 @@ public class ReservationController extends BaseControllerImpl<Reservation, Reser
     }
 
     @GetMapping("/getByPetId/{petId}")
+    @PreAuthorize("hasAuthority('READ')")
     public ResponseEntity<List<ReservationResponseDTO>> getAppointmentsByPatientId(@PathVariable Long petId) {
         try {
             List<ReservationResponseDTO> reservations = reservationService.getReservationsByPetSitterId(petId);
@@ -101,6 +106,7 @@ public class ReservationController extends BaseControllerImpl<Reservation, Reser
     }
 
     @GetMapping("/getAll")
+    @PreAuthorize("permitAll()")
     public ResponseEntity<List<ReservationResponseDTO>> getAllReservations() {
         try {
             List<ReservationResponseDTO> reservations = reservationService.getAllReservations();

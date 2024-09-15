@@ -1,0 +1,24 @@
+.profileLineWrapper {
+    width: 100%;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    p {
+        text-align: left;
+        &:first-child {
+            font-weight: bold;
+            width: 40%;
+            min-width: 120px;
+        }
+        &:last-child {
+            width: 60%;
+            min-width: 185px;
+        }
+    }
+}

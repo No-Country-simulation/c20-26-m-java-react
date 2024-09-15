@@ -23,27 +23,41 @@ const SearchService = () => {
     };
 
     const filteredItems = dataServices
-        //filtro por tipo de servicio
-        .filter((service) => service.typeService === filter || filter === "All")
+        .map((service) => {
+            const filteredTypeServices = service.typeService.filter(
+                (item) => item.type === filter || filter === "All"
+            );
 
-        //filtro por ciudad
-        .filter((item) =>
-            filterCity === "All"
-                ? item
-                : item.city.toLowerCase().startsWith(filterCity.toLowerCase())
-        )
-    ;
+            if (filteredTypeServices.length === 0) {
+                return null;
+            }
+
+            if (
+                filterCity !== "All" &&
+                !service.city.toLowerCase().startsWith(filterCity.toLowerCase())
+            ) {
+                return null;
+            }
+
+            return {
+                ...service,
+                typeService: filteredTypeServices,
+            };
+        })
+        .filter((item) => item !== null);
 
     const reset = () => {
         setFilter("All");
         setFilterCity("All");
         document.querySelector(".input-text").value = "";
-    }
+    };
 
     return (
         <div className="SearchServiceWrapper">
             <div className="searchCategories">
-                <p style={{textAlign:"center", marginBottom:"10px"}}>Filtros</p>
+                <p style={{ textAlign: "center", marginBottom: "10px" }}>
+                    Filtros
+                </p>
                 <div className="radioInputContainer">
                     <div className="searchInput">
                         <input
@@ -98,18 +112,20 @@ const SearchService = () => {
                 {filteredItems.length === 0 ? (
                     <p>No hay servicios disponibles</p>
                 ) : (
-                    filteredItems.map((service, index) => (
-                        <CardSearch
-                            key={index}
-                            photo={service.photo}
-                            name={service.name}
-                            typeService={service.typeService}
-                            price={service.price}
-                            city={service.city}
-                            textInfo={service.textInfo}
-                            tags={service.tags}
-                        />
-                    ))
+                    filteredItems.map((service, index) =>
+                        service.typeService.map((item, index) => (
+                            <CardSearch
+                                key={index}
+                                photo={service.photo}
+                                name={service.name}
+                                typeService={item.type}
+                                price={item.price}
+                                city={service.city}
+                                textInfo={item.textInfo}
+                                tags={item.tags}
+                            />
+                        ))
+                    )
                 )}
             </div>
         </div>

@@ -1,8 +1,7 @@
-import React, { lazy, Suspense } from "react";
+import { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import Layout from "../components/layout/layout";
-
 
 const MyRoutes = () => {
     const Home = lazy(() => import("../pages/home/home"));
@@ -16,8 +15,7 @@ const MyRoutes = () => {
     return (
         <Router>
             <Layout>
-
-            <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<div>Loading...</div>}>
                     <Routes>
                         <Route path="/" element={<Home />}/>
                         <Route path="/login" element={<Login/>}/>
@@ -28,7 +26,7 @@ const MyRoutes = () => {
                         <Route path="/search" element={<SearchService/>}/>
 
                     </Routes>
-            </Suspense>
+                </Suspense>
             </Layout>
         </Router>
     );
