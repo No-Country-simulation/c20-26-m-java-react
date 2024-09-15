@@ -46,7 +46,6 @@ export default function User({ filter, handleFilter }) {
                     <h4 className="">Tus clientes</h4>
                     <div className="col-8">
                         <div>
-                            
                             <CardPet/>
                             <Card />
                         </div>

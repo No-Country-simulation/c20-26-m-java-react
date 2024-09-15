@@ -1,0 +1,35 @@
+.login-page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100vh;
+  
+    .login-form-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f9f9f9; /* Fondo gris claro */
+    }
+  
+    .login-promo-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #f9f9f9; /* Fondo con el grid */
+      background-image: url('/path/to/grid-background.png'); /* Imagen del grid */
+      background-size: cover;
+      text-align: center;
+  
+      .dog-image {
+        max-width: 80%;
+        height: auto;
+      }
+  
+      h2 {
+        font-size: 2rem;
+        margin-top: 20px;
+        color: #333;
+      }
+    }
+  }
+  
