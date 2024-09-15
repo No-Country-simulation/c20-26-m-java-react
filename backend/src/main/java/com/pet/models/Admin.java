@@ -15,12 +15,4 @@ import java.util.Set;
 //@Table(name = "admin")
 public class Admin extends UserSec {
 
-//    public Admin() {
-//        // Si rolesList es null o está vacío, inicializarlo
-//        if (this.getRolesList() == null || this.getRolesList().isEmpty()) {
-//            Role defaultRole = new Role(1, "ADMIN", List.of(new Permission(1, "READ")));
-//            this.setRolesList(Set.of(defaultRole));  // Asigna el rol predeterminado
-//        }
-//    }
-
 }
