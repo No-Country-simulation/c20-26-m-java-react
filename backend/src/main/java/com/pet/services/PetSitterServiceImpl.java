@@ -34,7 +34,7 @@ public class PetSitterServiceImpl extends BaseServiceImpl<PetSitter, Long> imple
         try {
             //When an PetSitter is created, the role is PET_SITTER by default
             Set<Role> roles = new HashSet<>();
-            Optional<Role> petSitterRole = roleRepository.findById(3L);
+            Optional<Role> petSitterRole = roleRepository.findById(2L);
             petSitterRole.ifPresent(roles::add);
             entity.setRolesList(roles);
 
