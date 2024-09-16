@@ -31,7 +31,7 @@ export default function User({ filter, handleFilter }) {
                             </button>
                         </div>
                         <span className="navbar-text order-lg-2 order-0">
-                            <NavLink to={'/login'}>
+                            <NavLink to={'/profile'}>
                                 <i className="bi bi-person" style={{fontSize: '30px'}}></i>
                             </NavLink>
                         </span>
@@ -47,7 +47,7 @@ export default function User({ filter, handleFilter }) {
                     <div className="col-8">
                         <div>
                             <CardPet/>
-                            <Card />
+                            <Card/>
                         </div>
                     </div>
                     <div className="col-4">

@@ -1,13 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./searchService.scss";
 import CardSearch from "../../components/ux/cardSearch/cardSearch";
 import { DATASERVICES } from "../../constants/services";
 import FormButton from "../../components/ux/formButton/formButton";
-const SearchService = () => {
 
+const SearchService = () => {
+    const location = useLocation(); // Acceder al estado de navegación
+    const navigate = useNavigate()
     const dataServices = DATASERVICES;
-    const [filter, setFilter] = useState("All");
+
+    // Establecemos el filtro inicial basado en la navegación o por defecto "All"
+    const [filter, setFilter] = useState(location.state?.filter || "All");
     const [filterCity, setFilterCity] = useState("All");
+
+    useEffect(() => {
+        if (location.state?.filter) {
+            setFilter(location.state.filter);
+        }
+    }, [location.state?.filter]);
 
     const handleFilter = (e) => {
         setFilter(e.target.value);
@@ -54,6 +65,11 @@ const SearchService = () => {
 
     return (
         <div className="SearchServiceWrapper">
+            <div className="row">
+                    <div className="col-auto" style={{ position: "absolute", top: "3rem", left: "40px" }}>
+                        <i className="bi bi-chevron-left" onClick={()=>navigate('/user')} style={{ fontSize: "35px" }}></i>
+                    </div>
+                </div>
             <div className="searchCategories">
                 <p style={{ textAlign: "center", marginBottom: "10px" }}>
                     Filtros

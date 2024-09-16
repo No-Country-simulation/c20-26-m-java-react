@@ -69,10 +69,10 @@ const Register = () => {
             <div className="container">
               <div className="row justify-content-center">
                 <div className="col-lg-6">
-                  <div className="card rounded-4 shadow-lg p-5">
+                  <div className="card rounded-4 shadow-lg p-3">
                     <div className="card-body">
                       <h4 className="mb-4">Registro de Usuario</h4>
-                      <div className="mb-4 d-flex flex-column align-items-center">
+                      <div className="mb-5 d-flex flex-column align-items-center">
                         {preview ? (
                           <img
                             src={preview}
@@ -113,13 +113,13 @@ const Register = () => {
                         />
                       </div>
                       <div className="row g-3">
-                        <div className="col-md-6">
+                        <div className="col-md-6 mb-2">
                           <CustomInput label="Nombre" name="name" />
                         </div>
-                        <div className="col-md-6">
+                        <div className="col-md-6 mb-2">
                           <CustomInput label="DNI" name="dni" />
                         </div>
-                        <div className="col-md-6">
+                        <div className="col-md-6 mb-2">
                           <CustomInput
                             label="Tipo de usuario"
                             name="classUser"
@@ -132,16 +132,16 @@ const Register = () => {
                             <option value="prestadorServicio">Prestador de servicios</option>
                           </CustomInput>
                         </div>
-                        <div className="col-md-6">
+                        <div className="col-md-6 mb-2">
                           <CustomInput name="phone" label="Telefono" />
                         </div>
-                        <div className="col-md-6">
+                        <div className="col-md-6 mb-2">
                           <CustomInput name="email" label="Correo" />
                         </div>
-                        <div className="col-md-6">
+                        <div className="col-md-6 mb-2">
                           <CustomInput name="city" label="Ciudad" />
                         </div>
-                        <div className="col-md-6">
+                        <div className="col-md-6 mb-2">
                           <CustomInput name="userName" label="Nombre de usuario" />
                         </div>
                         <div className="col-md-6">

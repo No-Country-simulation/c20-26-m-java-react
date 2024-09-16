@@ -2,9 +2,12 @@ import { Formik, Field, useField } from "formik";
 import * as Yup from "yup";
 import PropTypes from 'prop-types';
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom'
+
 
 const Pet = () => {
   const [preview, setPreview] = useState(null);
+  const navigate = useNavigate()
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().required(),
@@ -63,14 +66,19 @@ const Pet = () => {
     >
       {({ setFieldValue }) => (
         <form className="text-center">
+          <div className="row">
+            <div className="col-auto" style={{ position: "absolute", top: "3rem", left: "40px" }}>
+              <i className="bi bi-chevron-left" onClick={()=>navigate('/login')} style={{ fontSize: "35px" }}></i>
+            </div>
+          </div>
           <div className="d-flex justify-content-center align-items-center vh-100">
             <div className="container">
               <div className="row justify-content-center">
                 <div className="col-lg-6">
-                  <div className="card rounded-4 shadow-lg p-5">
+                  <div className="card rounded-4 shadow-lg p-3">
                     <div className="card-body">
                       <h4 className="mb-4">Registro de Mascota</h4>
-                      <div className="mb-4 d-flex flex-column align-items-center">
+                      <div className="mb-5 d-flex flex-column align-items-center">
                         {preview ? (
                           <img
                             src={preview}
@@ -111,16 +119,16 @@ const Pet = () => {
                         />
                       </div>
                       <div className="row g-3">
-                        <div className="col-md-6">
+                        <div className="col-md-6 mb-2">
                           <CustomInput label="Nombre" name="name" />
                         </div>
-                        <div className="col-md-6">
+                        <div className="col-md-6 mb-2">
                           <CustomInput label="Especie" name="species" />
                         </div>
-                        <div className="col-md-6">
+                        <div className="col-md-6 mb-2">
                           <CustomInput label="Raza" name="race" />
                         </div>
-                        <div className="col-md-6">
+                        <div className="col-md-6 mb-2">
                           <CustomInput
                             label="Género"
                             name="gender"
@@ -133,10 +141,10 @@ const Pet = () => {
                             <option value="masculino">Masculino/a</option>
                           </CustomInput>
                         </div>
-                        <div className="col-md-6">
+                        <div className="col-md-6 mb-2">
                           <CustomInput label="Edad" name="age" />
                         </div>
-                        <div className="col-md-6">
+                        <div className="col-md-6 mb-2">
                           <CustomInput
                             label="¿Vacunado?"
                             name="vaccinated"
@@ -152,7 +160,7 @@ const Pet = () => {
                         <div className="col-md-6">
                           <CustomInput label="Detalle" name="detalle" />
                         </div>
-                        <div className="col-md-6">
+                        <div className="col-md-6 mb-2">
                           <CustomInput
                             label="Comportamiento"
                             name="behavior"

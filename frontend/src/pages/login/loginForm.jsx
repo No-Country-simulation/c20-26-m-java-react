@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './LoginForm.scss';  // Importar los estilos del formulario
+import './loginForm.scss';  // Importar los estilos del formulario
 
 const LoginForm = () => {
   const [username, setUsername] = useState('');

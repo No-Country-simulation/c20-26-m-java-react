@@ -1,15 +1,12 @@
 import Card from "../../components/ux/card/card"
 import Calendar from "../../components/ux/calendar/calendar"
 import PropTypes from 'prop-types';
-import CardProfileService from "../../components/ux/profileServ/profileService";
+import CardProfile from "../../components/ux/cardProfile/cardProfile";
 import { NavLink } from "react-router-dom";
 
-export default function Service({ filter, handleFilter }) {
+export default function Service() {
 
-    Service.propTypes = {
-        filter: PropTypes.string,
-        handleFilter: PropTypes.func 
-    };
+    
 
     return (
         <div>
@@ -18,9 +15,7 @@ export default function Service({ filter, handleFilter }) {
                     <form className="d-flex" role="search">
                         <input 
                             className="form-control me-2 border-radius custom-input" 
-                            type="search" 
-                            value={filter} 
-                            onChange={handleFilter} 
+                            type="search"
                             placeholder="Busca tu servicio favorito" 
                             aria-label="Search"
                         />
@@ -32,7 +27,7 @@ export default function Service({ filter, handleFilter }) {
                             </button>
                         </div>
                         <span className="navbar-text order-lg-2 order-0">
-                            <NavLink to={'/login'}>
+                            <NavLink to={'/profile'}>
                                 <i className="bi bi-person" style={{fontSize: '30px'}}></i>
                             </NavLink>
                         </span>
@@ -47,7 +42,7 @@ export default function Service({ filter, handleFilter }) {
                     <h4 className="">Tus clientes</h4>
                     <div className="col-8">
                         <div>
-                        <CardProfileService />
+                        <CardProfile />
                             <Card />
                         </div>
                     </div>

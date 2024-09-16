@@ -23,7 +23,7 @@ const Header = () => {
     return (
     <div className='headerWrapper'>
         <div className='logoContainer'>
-            <img src={HEADERLOGO} alt='Logo' />
+            <img className='m-4' src={HEADERLOGO} alt='Logo' />
         </div>
         {
             isLogin && (

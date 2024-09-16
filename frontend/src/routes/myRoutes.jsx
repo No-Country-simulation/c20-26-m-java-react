@@ -11,6 +11,7 @@ const MyRoutes = () => {
     const User = lazy(() => import("../pages/pageUser/indexUser"))
     const Service = lazy(() => import("../pages/pageServices/indexService"))
     const SearchService = lazy(() => import("../pages/searchService/searchService"))
+    const Profile = lazy(() => import('../pages/profile/profile'))
 
     return (
         <Router>
@@ -23,8 +24,8 @@ const MyRoutes = () => {
                         <Route path="/pet" element={<Pet/>}/>
                         <Route path="/user" element={<User/>}/>
                         <Route path="/service" element={<Service/>}/>
+                        <Route path="/profile" element={<Profile/>}/>
                         <Route path="/search" element={<SearchService/>}/>
-
                     </Routes>
                 </Suspense>
             </Layout>

@@ -1,5 +1,5 @@
 import LoginForm from './LoginForm';  // Componente del formulario
-import './LoginPage.scss';  // Importar estilos
+import './loginPage.scss';  // Importar estilos
 
 const LoginPage = () => {
   return (
@@ -12,7 +12,7 @@ const LoginPage = () => {
       {/* Sección derecha con la imagen y el texto */}
       <div className="login-promo-container">
         <img
-          src="path/to/dog-image.png" // Cambia esto por la ruta correcta de la imagen del perro
+          src="../../assets/images/Image.png" // Cambia esto por la ruta correcta de la imagen del perro
           alt="Dog"
           className="dog-image"
         />
