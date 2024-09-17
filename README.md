@@ -34,9 +34,9 @@ Con **Patitas**, tu mascota recibe el amor y el cuidado que se merece, mientras 
 
 [![Sitio Web](https://img.shields.io/badge/Sitio%20Web-Frontend-green)](https://patitas.vercel.app/)
 
-## Deploy Backend en Railway
+## Deploy Backend en Render
 
-[![Backend](https://img.shields.io/badge/Backend-Cloud-blue)](http://patitas.up.railway.app)
+[![Backend](https://img.shields.io/badge/Backend-Render-blue)](https://patitas-platform.onrender.com/p)
 
 ## Stacks General 📁
 
