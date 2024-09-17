@@ -28,7 +28,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@PreAuthorize("denyAll()")
 @CrossOrigin(origins = "*")
 @RequestMapping(path = "api/reservations")
 public class ReservationController extends BaseControllerImpl<Reservation, ReservationServiceImpl>{
@@ -37,6 +36,7 @@ public class ReservationController extends BaseControllerImpl<Reservation, Reser
     private ReservationService reservationService;
 
     @PostMapping("/createReservation")
+    @PreAuthorize("hasAnyRole('PET_OWNER')")
     public ResponseEntity<Map<String, String>> createReservation(@Valid @RequestBody ReservationCreateDTO reservationRequestDTO) {
         Map<String, String> response = new HashMap<>();
         try {
@@ -58,6 +58,7 @@ public class ReservationController extends BaseControllerImpl<Reservation, Reser
     }
 
     @PutMapping("/updateReservation/{reservationId}")
+    @PreAuthorize("hasAnyRole('PET_OWNER')")
     public ResponseEntity<ReservationResponseDTO> updateReservation(@PathVariable Long reservationId, @Valid @RequestBody ReservationUpdateDTO reservationUpdateDTO) {
         try {
             ReservationResponseDTO updatedReservation = reservationService.updateReservation(reservationId, reservationUpdateDTO);
@@ -69,7 +70,7 @@ public class ReservationController extends BaseControllerImpl<Reservation, Reser
         }
     }
 
-    
+
     @GetMapping("/getReservationById/{reservationId}")
     @PreAuthorize("hasAuthority('READ')")
     public ResponseEntity<ReservationResponseDTO> getReservationById(@PathVariable Long reservationId) {
@@ -106,7 +107,7 @@ public class ReservationController extends BaseControllerImpl<Reservation, Reser
     }
 
     @GetMapping("/getAll")
-    @PreAuthorize("permitAll()")
+    @PreAuthorize("hasAuthority('READ')")
     public ResponseEntity<List<ReservationResponseDTO>> getAllReservations() {
         try {
             List<ReservationResponseDTO> reservations = reservationService.getAllReservations();
