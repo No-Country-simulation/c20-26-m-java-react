@@ -2,18 +2,18 @@ import { Formik, Field, useField } from "formik";
 import * as Yup from "yup";
 import PropTypes from 'prop-types';
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const [preview, setPreview] = useState(null);
+  const navigate = useNavigate();
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().required(),
     dni: Yup.string().required(),
     classUser: Yup.string().required(),
     phone: Yup.string().required(),
-    email: Yup.string()
-        .email("Correo inválido")
-        .required(),
+    email: Yup.string().email('Correo inválido').required(),
     city: Yup.string().required(),
     userName: Yup.string().required(),
     password: Yup.string().required(),
@@ -22,19 +22,22 @@ const Register = () => {
   const CustomInput = ({ label, ...props }) => {
     const [field, meta] = useField(props);
     const hasError = meta.touched && meta.error;
+    
     return (
-        <div className="inputContainer">
-            <Field
-                {...field}
-                {...props}
-                type={props.type || "text"}
-                style={{
-                    border: hasError ? "2px solid red" : "1px solid black",
-                }}
-                placeholder={label}
-                className={`form-control ${props.className} rounded-pill`}
-            />
-        </div>
+      <div className="inputContainer">
+        <Field
+          {...field}
+          {...props}
+          type={props.type || "text"}
+          style={{
+            border: hasError ? "2px solid red" : "1px solid black",
+            padding: "0.375rem 0.75rem",
+            borderRadius: "8px",
+          }}
+          placeholder={label}
+          className={`form-control ${props.className} rounded-pill`}
+        />
+      </div>
     );
   };
 
@@ -65,6 +68,11 @@ const Register = () => {
     >
       {({ setFieldValue }) => (
         <form className="text-center">
+          <div className="row">
+            <div className="col-auto" style={{ position: "absolute", top: "3rem", left: "40px" }}>
+              <i className="bi bi-chevron-left" onClick={() => navigate('/login')} style={{ fontSize: "35px" }}></i>
+            </div>
+          </div>
           <div className="d-flex justify-content-center align-items-center vh-100">
             <div className="container">
               <div className="row justify-content-center">
@@ -128,7 +136,7 @@ const Register = () => {
                             <option value="" disabled>
                               Tipo de usuario
                             </option>
-                            <option className="" value="dueñoMascota">Dueño de Mascota</option>
+                            <option value="dueñoMascota">Dueño de Mascota</option>
                             <option value="prestadorServicio">Prestador de servicios</option>
                           </CustomInput>
                         </div>
@@ -148,7 +156,9 @@ const Register = () => {
                           <CustomInput name="password" label="Contraseña" />
                         </div>
                       </div>
-                      <button type="submit" className="btn btn-warning w-100 rounded-pill mt-4">Enviar</button>
+                      <button type="submit" className="btn btn-warning w-100 rounded-pill mt-4">
+                        Enviar
+                      </button>
                     </div>
                   </div>
                 </div>

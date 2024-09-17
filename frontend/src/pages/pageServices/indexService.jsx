@@ -1,13 +1,11 @@
 import Card from "../../components/ux/card/card"
 import Calendar from "../../components/ux/calendar/calendar"
-import PropTypes from 'prop-types';
 import CardProfile from "../../components/ux/cardProfile/cardProfile";
 import { NavLink } from "react-router-dom";
 
 export default function Service() {
 
     
-
     return (
         <div>
             <nav>

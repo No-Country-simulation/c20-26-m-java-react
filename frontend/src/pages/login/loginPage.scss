@@ -1,7 +1,7 @@
 .login-page {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    height: 100vh;
+    height: 70vh;
   
     .login-form-container {
       display: flex;
@@ -15,14 +15,11 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      background-image: url("../../assets/images/Image.png");
       background-color: #f9f9f9; /* Fondo con el grid */
       background-size: cover;
       text-align: center;
-  
-      .dog-image {
-        max-width: 80%;
-        height: auto;
-      }
+      border-radius: 15px ;
   
       h2 {
         font-size: 2rem;
