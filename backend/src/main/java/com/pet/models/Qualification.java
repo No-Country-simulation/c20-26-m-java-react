@@ -1,7 +1,6 @@
 package com.pet.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,11 +20,11 @@ public class Qualification extends Base {
 
     @ManyToOne
     @JoinColumn(name = "fk_pet_service", nullable = false)
-    @JsonBackReference("petService-qualifications")
+    @JsonBackReference("pet-service-qualifications")
     private PetService petService;
 
     @ManyToOne
     @JoinColumn(name = "fk_pet_sitter", nullable = false)
-    @JsonBackReference("petSitter-qualifications")
+    @JsonBackReference("pet-sitter-qualifications")
     private PetSitter petSitter;
 }

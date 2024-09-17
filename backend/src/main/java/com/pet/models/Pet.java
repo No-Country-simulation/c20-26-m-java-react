@@ -1,5 +1,7 @@
 package com.pet.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -24,12 +26,14 @@ public class Pet extends Base {
     private Integer age;
     private String behavior;
     private Boolean vaccinated;
-    
-//    @ManyToOne()
-//    @JoinColumn(name = "pet_owner_id", nullable = false)
-//    private PetOwner petOwner;
-//
-//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "pet")
-//    private List<Reservation> reservations;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_pet_owner", nullable = false)
+    @JsonBackReference("owner-pets")
+    private PetOwner petOwner;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "pet")
+    @JsonManagedReference("pet-reservations")
+    private List<Reservation> reservations;
 }
 
