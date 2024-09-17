@@ -7,7 +7,7 @@ const LoginPage = () => {
       <div className="login-form-container">
         <LoginForm />
       </div>
-      <div className="login-promo-container"></div>
+      <div className="login-promo-container "></div>
     </div>
   );
 };
