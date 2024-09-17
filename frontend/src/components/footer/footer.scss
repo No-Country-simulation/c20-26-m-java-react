@@ -1,0 +1,38 @@
+.footerWrapper{
+    width: 100%;
+    height: 12rem;
+}
+
+.footerImg {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: repeat-x;
+    background-position: bottom; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #ecc0e2; */
+    
+}
+
+.iconsFooterContainer{
+    width: 12rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    padding-top: 5rem;
+
+    li{
+        margin: 0;
+        padding: 0;
+        cursor: pointer;
+    }
+}
+
+.iconFooter{
+    color:#8f4a86;
+    font-size: 1.7rem;
+}

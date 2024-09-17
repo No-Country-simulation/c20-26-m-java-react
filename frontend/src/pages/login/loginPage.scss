@@ -1,0 +1,31 @@
+.login-page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 70vh;
+  
+    .login-form-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f9f9f9; /* Fondo gris claro */
+    }
+  
+    .login-promo-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-image: url("../../assets/images/Image.png");
+      background-color: #f9f9f9; /* Fondo con el grid */
+      background-size: cover;
+      text-align: center;
+      border-radius: 15px ;
+  
+      h2 {
+        font-size: 2rem;
+        margin-top: 20px;
+        color: #333;
+      }
+    }
+  }
+  
