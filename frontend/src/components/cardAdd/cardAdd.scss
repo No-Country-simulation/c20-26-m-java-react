@@ -1,0 +1,32 @@
+.cardAddWrapper{
+    /* width: 300px;
+    height: 300px; */
+    width: 100%;
+    max-width: 720px;
+    height: 100%;
+    min-height: 500px;
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    position: absolute;
+    /* top: 50%;
+    left: 50%; */
+
+    .addBtnContainer{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        .addBtn{
+            height: 40px;
+            width: 130px;
+            border-radius: 15px;
+            border: 1px solid grey;
+        }
+    }
+}

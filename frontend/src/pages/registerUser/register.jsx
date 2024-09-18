@@ -64,7 +64,7 @@ const Register = () => {
       }}
     > 
       {() => (
-        <form className="">
+        
           <div className="d-flex justify-content-center align-items-center vh-100">
             <div className="container">
               <div className="row justify-content-center">
@@ -124,7 +124,7 @@ const Register = () => {
               </div>
             </div>
           </div>
-        </form>
+        
       )}
     </Formik>
   );

@@ -2,7 +2,6 @@ import Card from "../../components/ux/card/card";
 import CardProfile from "../../components/ux/cardProfile/cardProfile";
 import Calendar from "../../components/ux/calendar/calendar";
 import PropTypes from 'prop-types';
-import './header.scss';
 import {  NavLink} from 'react-router-dom';
 
 export default function User({ filter, handleFilter }) {
