@@ -1,6 +1,6 @@
 import Card from "../../components/ux/card/card";
-import CardProfile from "../../components/ux/cardProfile/cardProfile";
 import Calendar from "../../components/ux/calendar/calendar";
+import CardPet from "../../components/ux/card/cardPet";
 import PropTypes from 'prop-types';
 import {  NavLink} from 'react-router-dom';
 
@@ -25,17 +25,16 @@ export default function User({ filter, handleFilter }) {
                         />
                         <div className="d-flex" style={{ alignItems: 'center' }}>
                             <button 
-                                className="btn border-radius bi bi-search-heart" 
+                                className="btn border-radius bi bi-search-heart mt-1 mb-4" 
                                 style={{ fontSize: '1rem' }} 
                                 type="submit">
                             </button>
                         </div>
                         <span className="navbar-text order-lg-2 order-0">
-                            <NavLink to={'/search'}>
-                                <i className="bi bi-person"></i>
+                            <NavLink to={'/profile'}>
+                                <i className="bi bi-person" style={{fontSize: '30px'}}></i>
                             </NavLink>
                         </span>
-
                     </form>
                 </div>
                 <nav className="navbar">
@@ -47,8 +46,8 @@ export default function User({ filter, handleFilter }) {
                     <h4 className="">Tus clientes</h4>
                     <div className="col-8">
                         <div>
-                            <CardProfile />
-                            <Card />
+                            <CardPet/>
+                            <Card/>
                         </div>
                     </div>
                     <div className="col-4">

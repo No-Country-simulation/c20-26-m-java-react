@@ -1,6 +1,9 @@
-import { NavLink } from "react-router-dom";
+import { useNavigate } from 'react-router-dom'
 
 export default function CardPet() {
+
+  const navigate = useNavigate()
+
   return (
     <div className="card-pet-container">
       <div className="card custom-card">
@@ -21,9 +24,7 @@ export default function CardPet() {
           </div>
         </div>
         <div className="card-icon">
-            <NavLink>
-                <i className="bi bi-box-arrow-up-right textDecoration text-black"></i>
-            </NavLink>
+            <i className="bi bi-box-arrow-up-right textDecoration text-black" onClick={()=>navigate('/profile')}></i>
         </div>
       </div>
     </div>
