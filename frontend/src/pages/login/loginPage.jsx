@@ -1,5 +1,5 @@
-import LoginForm from './LoginForm';  // Componente del formulario
-import './loginPage.scss';  // Importar estilos
+import LoginForm from "./loginForm"; // Componente del formulario
+import "./loginPage.scss"; // Importar estilos
 
 const LoginPage = () => {
   return (
