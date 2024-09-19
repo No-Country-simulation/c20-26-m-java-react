@@ -34,27 +34,27 @@ public class ReservationServiceImpl extends BaseServiceImpl<Reservation, Long> i
 
     @Autowired
     private IPetRepository petRepository;
-    
+
     @Autowired
     private IPetOwnerRepository petOwnerRepository;
-    
+
     @Autowired
     private IPetServiceRepository petServiceRepository;
 
-    
+
     public ReservationServiceImpl(BaseRepository<Reservation, Long> baseRepository) {
         super(baseRepository);
     }
 
     @Override
     public ReservationResponseDTO createReservation(ReservationCreateDTO request) {
-        
+
         PetSitter petSitter = petSitterRepository.findById(request.getPetSitterId())
                 .orElseThrow(() -> new ResourceNotFoundException("No se encontró cuidador con el ID especificado."));
 
         Pet pet = petRepository.findById(request.getPetId())
                 .orElseThrow(() -> new ResourceNotFoundException("No se encontró mascota con el ID especificado."));
-        
+
         PetOwner petOwner = petOwnerRepository.findById(request.getPetOwnerId())
                 .orElseThrow(() -> new ResourceNotFoundException("No se encontró dueño con el ID especificado."));
 
@@ -88,7 +88,7 @@ public class ReservationServiceImpl extends BaseServiceImpl<Reservation, Long> i
 
     @Override
     public ReservationResponseDTO updateReservation(Long reservationId,ReservationUpdateDTO request) {
-        
+
         Reservation reservation = reservationRepository.findById(reservationId)
                 .orElseThrow(() -> new ResourceNotFoundException("No se econtró reservación."));
 
@@ -97,7 +97,7 @@ public class ReservationServiceImpl extends BaseServiceImpl<Reservation, Long> i
 
         Pet pet = petRepository.findById(request.getPetId())
                 .orElseThrow(() -> new ResourceNotFoundException("No se encontró mascota."));
-        
+
         PetOwner petOwner = petOwnerRepository.findById(request.getPetOwnerId())
                 .orElseThrow(() -> new ResourceNotFoundException("No se encontró dueño."));
 
@@ -133,8 +133,8 @@ public class ReservationServiceImpl extends BaseServiceImpl<Reservation, Long> i
 
     @Override
     public List<ReservationResponseDTO> getReservationsByPetId(Long petId) {
-       List<Reservation> reservations = reservationRepository.findByPetId(petId);
-        return reservations.stream().map(ReservationResponseDTO::new).collect(Collectors.toList()); 
+        List<Reservation> reservations = reservationRepository.findByPetId(petId);
+        return reservations.stream().map(ReservationResponseDTO::new).collect(Collectors.toList());
     }
 
 
