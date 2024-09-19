@@ -65,6 +65,11 @@ const Register = () => {
       onSubmit={(values) => {
         console.log(values);
       }}
+<<<<<<< HEAD
+    > 
+      {() => (
+        
+=======
     >
       {({ setFieldValue }) => (
         <form className="text-center">
@@ -73,6 +78,7 @@ const Register = () => {
               <i className="bi bi-chevron-left" onClick={() => navigate('/login')} style={{ fontSize: "35px" }}></i>
             </div>
           </div>
+>>>>>>> origin/frontend-agus
           <div className="d-flex justify-content-center align-items-center vh-100">
             <div className="container">
               <div className="row justify-content-center">
@@ -165,7 +171,7 @@ const Register = () => {
               </div>
             </div>
           </div>
-        </form>
+        
       )}
     </Formik>
   );

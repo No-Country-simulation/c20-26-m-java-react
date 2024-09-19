@@ -1,3 +1,241 @@
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import CardAdd from "../../components/cardAdd/cardAdd";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addPet, setUser } from "../../redux/reducers/regUser";
+import { DATASERVICES } from "../../constants/services";
+
+const Pet = () => {
+    const BD = DATASERVICES;
+    const dataUsr = useSelector((state) => state.regUser);
+    const [showPopup, setShowPopup] = useState(false);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const [formData, setFormData] = useState({
+        name: "",
+        species: "",
+        breed: "",
+        gender: "",
+        age: "",
+        vacs: "",
+        details: "",
+        behavior: "",
+    });
+    
+    const handleReset = () => {
+        setFormData({
+            name: "",
+            species: "",
+            breed: "",
+            gender: "",
+            age: "",
+            vacs: "",
+            details: "",
+            behavior: "",
+        });
+    };
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            [name]: value,
+        }));
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(addPet(formData));
+        setShowPopup(true);
+    };
+
+    const handleBtnYes = () => {
+        //Guardar en la base de datos
+        handleReset();
+        setShowPopup(false);
+    };
+
+    const handleBtnNo = () => {
+        setShowPopup(false);
+        BD.push(dataUsr);
+        dispatch({ type: "SET_INDEX", payload: { index: BD.length-1, typeUser: "normal"} });
+        navigate("/user");
+    };
+
+    return (
+        <div
+            style={{
+                marginTop: "25px",
+                position: "relative",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+            }}
+        >
+            <form onSubmit={handleSubmit} className="">
+                <div className="d-flex justify-content-center align-items-center">
+                    <div className="container">
+                        <div className="row justify-content-center">
+                            <div className="col-lg-8">
+                                <div className="card rounded-4 shadow-lg p-5">
+                                    <div className="card-body text-center">
+                                        <div className="d-flex justify-content-start align-items-center mb-4">
+                                            <i
+                                                className="bi bi-caret-left-fill"
+                                                style={{
+                                                    fontSize: "24px",
+                                                    cursor: "pointer",
+                                                }}
+                                            ></i>
+                                            <h4 className="col ms-3">
+                                                Registro de Mascota
+                                            </h4>
+                                        </div>
+                                        <div className="mb-4">
+                                            <img
+                                                src="../assets/pet.jpg"
+                                                alt="Usuario"
+                                                className="rounded-circle"
+                                                style={{
+                                                    width: "100px",
+                                                    height: "100px",
+                                                }}
+                                            />
+                                        </div>
+                                        <div className="row g-3">
+                                            <div className="col-md-6">
+                                                <input
+                                                    label="Nombre"
+                                                    name="name"
+                                                    placeholder="Nombre"
+                                                    value={formData.name}
+                                                    className="form-control rounded-pill"
+                                                    onChange={handleChange}
+                                                />
+                                            </div>
+                                            <div className="col-md-6">
+                                                <input
+                                                    label="Especie"
+                                                    name="species"
+                                                    placeholder="Especie"
+                                                    value={formData.species}
+                                                    className="form-control rounded-pill"
+                                                    onChange={handleChange}
+                                                />
+                                            </div>
+                                            <div className="col-md-6">
+                                                <input
+                                                    label="Raza"
+                                                    name="breed"
+                                                    placeholder="Raza"
+                                                    value={formData.breed}
+                                                    className="form-control rounded-pill"
+                                                    onChange={handleChange}
+                                                />
+                                            </div>
+                                            <div className="col-md-6">
+                                                <select
+                                                    name="gender"
+                                                    className="form-control rounded-pill"
+                                                    onChange={handleChange}
+                                                    value={formData.gender}
+                                                >
+                                                    <option value="" disabled>
+                                                        Genero
+                                                    </option>
+                                                    <option value="femenino">
+                                                        Femenino/a
+                                                    </option>
+                                                    <option value="masculino">
+                                                        Masculino/a
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <div className="col-md-6">
+                                                <input
+                                                    label="Edad"
+                                                    type="number"
+                                                    name="age"
+                                                    placeholder="Edad"
+                                                    className="form-control rounded-pill"
+                                                    value={formData.age}
+                                                    onChange={handleChange}
+                                                />
+                                            </div>
+                                            <div className="col-md-6">
+                                                <select
+                                                    name="vacs"
+                                                    className="form-control rounded-pill"
+                                                    onChange={handleChange}
+                                                    value={formData.vacs}
+                                                >
+                                                    <option value="" disabled>
+                                                        Se encuentra vacunado?
+                                                    </option>
+                                                    <option value="si">
+                                                        Si
+                                                    </option>
+                                                    <option value="no">
+                                                        No
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <div className="col-md-6">
+                                                <input
+                                                    label="Detalle"
+                                                    placeholder="Detalles"
+                                                    name="details"
+                                                    className="form-control rounded-pill"
+                                                    onChange={handleChange}
+                                                    value={formData.details}
+                                                />
+                                            </div>
+                                            <div className="col-md-6">
+                                                <select
+                                                    name="behavior"
+                                                    className="form-control rounded-pill"
+                                                    onChange={handleChange}
+                                                    value={formData.behavior}
+                                                >
+                                                    <option value="" disabled>
+                                                        Comportamiento
+                                                    </option>
+                                                    <option value="bueno">
+                                                        Bueno
+                                                    </option>
+                                                    <option value="regular">
+                                                        Regular
+                                                    </option>
+                                                    <option value="malo">
+                                                        Malo
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <button
+                                            type="submit"
+                                            className="btn btn-warning w-100 rounded-pill mt-4"
+                                        >
+                                            Enviar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            {showPopup && (
+                <CardAdd
+                    txt={"usuario"}
+                    event1={handleBtnYes}
+                    event2={handleBtnNo}
+                />
+            )}
+        </div>
+    );
+    /* =======
 import * as Yup from "yup";
 import PropTypes from 'prop-types';
 import { useState } from "react";
@@ -10,8 +248,8 @@ const Pet = () => {
     race: "",
     gender: "",
     age: "",
-    vaccinated: "",
-    detalle: "",
+    vacs: "",
+    details: "",
     behavior: "",
     file: null,
   });
@@ -27,8 +265,8 @@ const Pet = () => {
     race: Yup.string().required(),
     gender: Yup.string().required(),
     age: Yup.string().required(),
-    vaccinated: Yup.string().required(),
-    detalle: Yup.string(),
+    vacs: Yup.string().required(),
+    details: Yup.string(),
     behavior: Yup.string().required(),
   });
 
@@ -188,7 +426,7 @@ const Pet = () => {
                       <CustomInput label="Edad" name="age" />
                     </div>
                     <div className="col-md-6 mb-2">
-                      <CustomInput label="¿Vacunado?" name="vaccinated" as="select">
+                      <CustomInput label="¿Vacunado?" name="vacs" as="select">
                         <option value="" disabled>
                           ¿Vacunado?
                         </option>
@@ -197,7 +435,7 @@ const Pet = () => {
                       </CustomInput>
                     </div>
                     <div className="col-md-6">
-                      <CustomInput label="Detalle" name="detalle" />
+                      <CustomInput label="Detalle" name="details" />
                     </div>
                     <div className="col-md-6 mb-2">
                       <CustomInput label="Comportamiento" name="behavior" as="select">
@@ -221,6 +459,7 @@ const Pet = () => {
       </div>
     </form>
   );
+>>>>>>> origin/frontend-agus */
 };
 
 export default Pet;

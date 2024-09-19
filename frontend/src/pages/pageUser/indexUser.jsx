@@ -3,8 +3,14 @@ import Calendar from "../../components/ux/calendar/calendar";
 import CardPet from "../../components/ux/card/cardPet";
 import PropTypes from 'prop-types';
 import {  NavLink} from 'react-router-dom';
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { searchData } from "../../constants/serchData";
 
 export default function User({ filter, handleFilter }) {
+
+    const dataLog = useSelector((state) => state.indexR);
+    const dataObj = searchData(dataLog.index);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -38,15 +44,19 @@ export default function User({ filter, handleFilter }) {
                     </form>
                 </div>
                 <nav className="navbar">
-                    <h2 className="navbar mt-2 m-1">Bienvenida, Julieta!</h2>
+                    <h2 className="navbar mt-2 m-1">Hola {dataObj.name.substring(0, dataObj.name.indexOf(' '))}</h2>
                 </nav>
             </nav>
             <div className="container mt-2">
                 <div className="row">
-                    <h4 className="">Tus clientes</h4>
+                    <h4 className="">Tus Mascotas</h4>
                     <div className="col-8">
                         <div>
-                            <CardPet/>
+                            {
+                                dataObj.pets.map((pet) => (
+                                    <CardPet objPet={pet} key={pet.id}/>
+                                ))
+                            }
                             <Card/>
                         </div>
                     </div>
