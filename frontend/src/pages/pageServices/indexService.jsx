@@ -2,9 +2,12 @@ import Card from "../../components/ux/card/card"
 import Calendar from "../../components/ux/calendar/calendar"
 import CardProfile from "../../components/ux/cardProfile/cardProfile";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { searchData } from "../../constants/serchData";
 
 export default function Service() {
-
+    const dataLog = useSelector((state) => state.indexR);
+    const dataObj = searchData(dataLog.index);
     
     return (
         <div>
@@ -32,7 +35,7 @@ export default function Service() {
                     </form>
                 </div>
                 <nav className="navbar">
-                    <h2 className="navbar mt-2 m-1">Bienvenida, Julieta!</h2>
+                    <h2 className="navbar mt-2 m-1">Hola {dataObj.name.substring(0, dataObj.name.indexOf(' '))}!</h2>
                 </nav>
             </nav>
             <div className="container mt-2">

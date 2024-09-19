@@ -1,22 +1,40 @@
-<<<<<<< HEAD
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import CardAdd from "../../components/cardAdd/cardAdd";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addPet, setUser } from "../../redux/reducers/regUser";
+import { DATASERVICES } from "../../constants/services";
 
 const Pet = () => {
+    const BD = DATASERVICES;
+    const dataUsr = useSelector((state) => state.regUser);
     const [showPopup, setShowPopup] = useState(false);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [formData, setFormData] = useState({
         name: "",
         species: "",
         breed: "",
         gender: "",
         age: "",
-        vaccinated: "",
-        detalle: "",
+        vacs: "",
+        details: "",
         behavior: "",
     });
+    
+    const handleReset = () => {
+        setFormData({
+            name: "",
+            species: "",
+            breed: "",
+            gender: "",
+            age: "",
+            vacs: "",
+            details: "",
+            behavior: "",
+        });
+    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -28,20 +46,22 @@ const Pet = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        dispatch(addPet(formData));
         setShowPopup(true);
-        console.log(formData);
     };
 
     const handleBtnYes = () => {
-        //Guardar en la base de datos y/o localStorage
+        //Guardar en la base de datos
+        handleReset();
         setShowPopup(false);
-        navigate(0);
     };
-    
+
     const handleBtnNo = () => {
         setShowPopup(false);
+        BD.push(dataUsr);
+        dispatch({ type: "SET_INDEX", payload: { index: BD.length-1, typeUser: "normal"} });
         navigate("/user");
-    }
+    };
 
     return (
         <div
@@ -89,6 +109,7 @@ const Pet = () => {
                                                     label="Nombre"
                                                     name="name"
                                                     placeholder="Nombre"
+                                                    value={formData.name}
                                                     className="form-control rounded-pill"
                                                     onChange={handleChange}
                                                 />
@@ -98,6 +119,7 @@ const Pet = () => {
                                                     label="Especie"
                                                     name="species"
                                                     placeholder="Especie"
+                                                    value={formData.species}
                                                     className="form-control rounded-pill"
                                                     onChange={handleChange}
                                                 />
@@ -107,6 +129,7 @@ const Pet = () => {
                                                     label="Raza"
                                                     name="breed"
                                                     placeholder="Raza"
+                                                    value={formData.breed}
                                                     className="form-control rounded-pill"
                                                     onChange={handleChange}
                                                 />
@@ -136,15 +159,16 @@ const Pet = () => {
                                                     name="age"
                                                     placeholder="Edad"
                                                     className="form-control rounded-pill"
+                                                    value={formData.age}
                                                     onChange={handleChange}
                                                 />
                                             </div>
                                             <div className="col-md-6">
                                                 <select
-                                                    name="vaccinated"
+                                                    name="vacs"
                                                     className="form-control rounded-pill"
                                                     onChange={handleChange}
-                                                    value={formData.vaccinated}
+                                                    value={formData.vacs}
                                                 >
                                                     <option value="" disabled>
                                                         Se encuentra vacunado?
@@ -161,9 +185,10 @@ const Pet = () => {
                                                 <input
                                                     label="Detalle"
                                                     placeholder="Detalles"
-                                                    name="detalle"
+                                                    name="details"
                                                     className="form-control rounded-pill"
                                                     onChange={handleChange}
+                                                    value={formData.details}
                                                 />
                                             </div>
                                             <div className="col-md-6">
@@ -210,7 +235,7 @@ const Pet = () => {
             )}
         </div>
     );
-=======
+    /* =======
 import * as Yup from "yup";
 import PropTypes from 'prop-types';
 import { useState } from "react";
@@ -223,8 +248,8 @@ const Pet = () => {
     race: "",
     gender: "",
     age: "",
-    vaccinated: "",
-    detalle: "",
+    vacs: "",
+    details: "",
     behavior: "",
     file: null,
   });
@@ -240,8 +265,8 @@ const Pet = () => {
     race: Yup.string().required(),
     gender: Yup.string().required(),
     age: Yup.string().required(),
-    vaccinated: Yup.string().required(),
-    detalle: Yup.string(),
+    vacs: Yup.string().required(),
+    details: Yup.string(),
     behavior: Yup.string().required(),
   });
 
@@ -401,7 +426,7 @@ const Pet = () => {
                       <CustomInput label="Edad" name="age" />
                     </div>
                     <div className="col-md-6 mb-2">
-                      <CustomInput label="¿Vacunado?" name="vaccinated" as="select">
+                      <CustomInput label="¿Vacunado?" name="vacs" as="select">
                         <option value="" disabled>
                           ¿Vacunado?
                         </option>
@@ -410,7 +435,7 @@ const Pet = () => {
                       </CustomInput>
                     </div>
                     <div className="col-md-6">
-                      <CustomInput label="Detalle" name="detalle" />
+                      <CustomInput label="Detalle" name="details" />
                     </div>
                     <div className="col-md-6 mb-2">
                       <CustomInput label="Comportamiento" name="behavior" as="select">
@@ -434,7 +459,7 @@ const Pet = () => {
       </div>
     </form>
   );
->>>>>>> origin/frontend-agus
+>>>>>>> origin/frontend-agus */
 };
 
 export default Pet;

@@ -1,19 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./header.scss";
 import HEADERLOGO from "../../assets/images/Logo.png";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { searchData } from "../../constants/serchData";
 
 const Header = () => {
-    const [isLogin, setIsLogin] = useState(true);
     const [menuUser, setMenuUser] = useState(false);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const dataLog = useSelector((state) => state.indexR);
+    const [dataObj, setDataObj] = useState(null);
 
+    useEffect(() => {
+        const result = searchData(dataLog.index);
+        setDataObj(result);
+    }, [dataLog]);
+    
     const handleClickUser = () => {
         setMenuUser(!menuUser);
     };
 
     const closeSession = () => {
-        setIsLogin(false);
+        
+        dispatch({ type: "RESET_INDEX" });
         navigate("/");
     };
 
@@ -22,10 +32,10 @@ const Header = () => {
             <div className="logoContainer">
                 <img className="m-4" src={HEADERLOGO} alt="Logo" />
             </div>
-            {isLogin && (
+            {dataObj && (
                 <div className="loginContainer" onClick={handleClickUser}>
                     <img
-                        src="https://via.placeholder.com/150"
+                        src={dataObj.photo}
                         alt="userPhoto"
                     />
                     {menuUser && (

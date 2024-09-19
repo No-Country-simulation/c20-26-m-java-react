@@ -7,11 +7,11 @@ import FormButton from "../../components/ux/formButton/formButton";
 
 const SearchService = () => {
     const location = useLocation(); // Acceder al estado de navegación
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const dataServices = DATASERVICES;
 
     // Establecemos el filtro inicial basado en la navegación o por defecto "All"
-    const [filter, setFilter] = useState(location.state?.filter || "All");
+    const [filter, setFilter] = useState(location.state?.filter ||"All");
     const [filterCity, setFilterCity] = useState("All");
 
     useEffect(() => {
@@ -35,25 +35,31 @@ const SearchService = () => {
 
     const filteredItems = dataServices
         .map((service) => {
-            const filteredTypeServices = service.typeService.filter(
-                (item) => item.type === filter || filter === "All"
-            );
+            if (service.typeUser === "service") {
+                const filteredTypeServices = service.typeService.filter(
+                    (item) => item.type === filter || filter === "All"
+                );
 
-            if (filteredTypeServices.length === 0) {
+                if (filteredTypeServices.length === 0) {
+                    return null;
+                }
+
+                if (
+                    filterCity !== "All" &&
+                    !service.city
+                        .toLowerCase()
+                        .startsWith(filterCity.toLowerCase())
+                ) {
+                    return null;
+                }
+
+                return {
+                    ...service,
+                    typeService: filteredTypeServices,
+                };
+            }else{
                 return null;
             }
-
-            if (
-                filterCity !== "All" &&
-                !service.city.toLowerCase().startsWith(filterCity.toLowerCase())
-            ) {
-                return null;
-            }
-
-            return {
-                ...service,
-                typeService: filteredTypeServices,
-            };
         })
         .filter((item) => item !== null);
 
@@ -66,10 +72,17 @@ const SearchService = () => {
     return (
         <div className="SearchServiceWrapper">
             <div className="row">
-                    <div className="col-auto" style={{ position: "absolute", top: "3rem", left: "40px" }}>
-                        <i className="bi bi-chevron-left" onClick={()=>navigate('/user')} style={{ fontSize: "35px" }}></i>
-                    </div>
+                <div
+                    className="col-auto"
+                    style={{ position: "absolute", top: "3rem", left: "40px" }}
+                >
+                    <i
+                        className="bi bi-chevron-left"
+                        onClick={() => navigate("/user")}
+                        style={{ fontSize: "35px" }}
+                    ></i>
                 </div>
+            </div>
             <div className="searchCategories">
                 <p style={{ textAlign: "center", marginBottom: "10px" }}>
                     Filtros

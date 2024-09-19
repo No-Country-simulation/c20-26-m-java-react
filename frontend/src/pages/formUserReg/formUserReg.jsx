@@ -5,25 +5,27 @@ import * as Yup from "yup";
 import { FaRegEye, FaRegEyeSlash, FaPencilAlt } from "react-icons/fa";
 import FormButton from "../../components/ux/formButton/formButton";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "../../redux/reducers/regUser";
 
 const validationSchema = Yup.object().shape({
-    image: Yup.mixed().required("Se requiere una imagen"),
+    photo: Yup.mixed().required("Se requiere una photon"),
     name: Yup.string().required("Campo obligatorio"),
     dni: Yup.string()
         .required("Campo obligatorio")
         .matches(/^\d{8}$/, "Debe contener 8 números"),
-    classUser: Yup.string().required("Campo obligatorio"),
+    typeUser: Yup.string().required("Campo obligatorio"),
     phone: Yup.string()
         .required("Campo obligatorio")
         .min(10, 'Minimo 10 numeros')
         .matches(/^\d*$/, 'Solo números'),
-    email: Yup.string().email("Correo inválido").required("Campo obligatorio"),
+    mail: Yup.string().email("Correo inválido").required("Campo obligatorio"),
     city: Yup.string().required("Campo obligatorio"),
-    password: Yup.string()
+    pass: Yup.string()
         .required("Campo obligatorio")
         .matches(/^(?=.*[0-9])/, "Al menos un número"),
     confirmPassword: Yup.string()
-        .oneOf([Yup.ref("password"), null], "Las contraseñas deben coincidir")
+        .oneOf([Yup.ref("pass"), null], "Las contraseñas deben coincidir")
         .required("Campo obligatorio"),
 });
 
@@ -68,28 +70,41 @@ const CustomInput = ({ label, ...props }) => {
 };
 
 const FormUserReg = () => {
+    
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [preview, setPreview] = useState(null);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    
+    console.log(preview)
     
     const hanldeFormSubmit = (values) => {
-        if(values.classUser === "usuarioComun"){
-            navigate('/pet')
+        const userData = {
+            ...values,
+            photo: preview,
+        };
+
+        if (values.typeUser === "normal") {
+            navigate('/pet');
+        } else {
+            navigate('/registerService');
         }
-    }
+        dispatch(setUser(userData));
+        /* dispatch({ type: 'SET_USER', payload: userData }); */
+    };
 
     return (
         <Formik
             initialValues={{
-                image: null,
+                photo: null,
                 name: "",
                 dni: "",
-                classUser: "",
+                typeUser: "",
                 phone: "",
-                email: "",
+                mail: "",
                 city: "",
-                password: "",
+                pass: "",
                 confirmPassword: "",
             }}
             validationSchema={validationSchema}
@@ -103,23 +118,23 @@ const FormUserReg = () => {
                         {preview ? (
                             <img src={preview} alt="Vista previa" />
                         ) : (
-                            <div className="placeholder"></div> // Placeholder en caso de no haber imagen
+                            <div className="placeholder"></div> // Placeholder en caso de no haber photon
                         )}
 
-                        <label htmlFor="image">
+                        <label htmlFor="photo">
                             <div className="editIcon">
                                 <FaPencilAlt />{" "}
                             </div>
                         </label>
 
                         <input
-                            id="image"
-                            name="image"
+                            id="photo"
+                            name="photo"
                             type="file"
-                            accept="image/jpeg, image/png"
+                            accept="photo/jpeg, photo/png"
                             onChange={(event) => {
                                 const file = event.currentTarget.files[0];
-                                setFieldValue("image", file);
+                                setFieldValue("photo", file);
 
                                 if (file) {
                                     const reader = new FileReader();
@@ -139,27 +154,27 @@ const FormUserReg = () => {
                             <CustomInput label="DNI" name="dni" />
                             <CustomInput
                                 label="Tipo de usuario"
-                                name="classUser"
+                                name="typeUser"
                                 as="select"
                             >
                                 <option value="" disabled>
                                     Tipo de usuario
                                 </option>
-                                <option value="usuarioComun">Dueño</option>
-                                <option value="servicios">
+                                <option value="normal">Dueño</option>
+                                <option value="service">
                                     Prestador de Servicios
                                 </option>
                             </CustomInput>
                             <CustomInput label="Teléfono" name="phone" type="tel" />
                         </div>
                         <div className="col2">
-                            <CustomInput label="Correo" name="email" />
+                            <CustomInput label="Correo" name="mail" />
                             <CustomInput label="Ciudad" name="city" />
                             <div className="passwordContainer">
                                 <CustomInput
                                     type={showPassword ? "text" : "password"}
                                     label="Contraseña"
-                                    name="password"
+                                    name="pass"
                                 />
                                 {showPassword ? (
                                     <FaRegEyeSlash
