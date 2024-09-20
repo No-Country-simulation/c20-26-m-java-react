@@ -35,7 +35,6 @@ const RegisterService = () => {
 
     const handleBtnNo = () => {
         setShowPopup(false);
-        console.log(dataUsr);
         BD.push(dataUsr);
         dispatch({
             type: "SET_INDEX",
@@ -177,7 +176,7 @@ const RegisterService = () => {
             </form>
             {showPopup && (
                 <CardAdd
-                    txt={"usuario"}
+                    txt={"servicio"}
                     event1={handleBtnYes}
                     event2={handleBtnNo}
                 />
