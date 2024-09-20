@@ -77,7 +77,6 @@ const FormUserReg = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     
-    console.log(preview)
     
     const hanldeFormSubmit = (values) => {
         const userData = {

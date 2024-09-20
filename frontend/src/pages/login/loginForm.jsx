@@ -20,11 +20,8 @@ const LoginForm = () => {
                 BD[i].mail === infoLogin.username &&
                 BD[i].pass === infoLogin.password
             ) {
-                console.log("Usuario encontrado");
                 dispatch({ type: "SET_INDEX", payload: { index: i, typeUser: BD[i].typeUser} });
                 return;
-            } else {
-                console.log("Usuario no encontrado");
             }
         }
     };
