@@ -1,5 +1,6 @@
 package com.pet.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.pet.enumerations.AvailableHours;
 import com.pet.enumerations.Day;
 import jakarta.persistence.*;
@@ -24,29 +25,27 @@ public class Reservation extends Base {
     private AvailableHours reservationHour;
     @Column(name = "reservation_description", length = 120)
     private String reservationDescription;
-    
     @CreatedDate
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDate createdAt;
-    
     @LastModifiedDate
     @Column(name = "updated_at")
     private LocalDate updatedAt;
-    
     @ManyToOne
     @JoinColumn(name = "pet_owner_id", nullable = false)
+    @JsonBackReference("owner-reservations")
     private PetOwner petOwner;
-    
     @ManyToOne
     @JoinColumn(name = "pet_id", nullable = false)
+    @JsonBackReference("pet-reservations")
     private Pet pet;
-    
     @ManyToOne
     @JoinColumn(name = "pet_service_id", nullable = false)
+    @JsonBackReference("pet-service-reservations")
     private PetService petService;
-    
     @ManyToOne
     @JoinColumn(name = "pet_sitter_id", nullable = false)
+    @JsonBackReference("pet-sitter-reservations")
     private PetSitter petSitter;
 }
 

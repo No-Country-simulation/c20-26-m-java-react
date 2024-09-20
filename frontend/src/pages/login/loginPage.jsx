@@ -1,5 +1,7 @@
+
 // Componente del formulario
 import LoginForm from "./loginForm";
+
 import "./loginPage.scss"; // Importar estilos
 
 const LoginPage = () => {
