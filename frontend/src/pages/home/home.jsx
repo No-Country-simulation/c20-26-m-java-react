@@ -1,3 +1,4 @@
+
 import React from "react";
 import "./home.scss";
 import dogImage from "../../assets/images/Image.png";
